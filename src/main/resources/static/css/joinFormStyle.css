@@ -1,0 +1,118 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'NanumSquareNeo-Variable';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+a{
+    color: #333;
+    text-decoration: none;
+}
+
+body{
+    font-family: 'NanumSquareNeo-Variable',serif;
+    font-size: 16px;
+    line-height: 23px;
+    color: #333;
+}
+
+img{
+    vertical-align: top;
+}
+
+input{
+    outline: none;
+}
+
+.wrap{
+    width: 100%;
+    min-width: 1280px;
+}
+
+.clearfix::after{
+    content: "";
+    display: block;
+    clear: both;
+}
+
+#joinForm{
+    width: 600px;
+    margin: 100px auto 150px;
+}
+
+
+.register {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 3px solid rgb(163, 202, 163);
+    border-radius: 20px;
+}
+p {
+    display: flex;
+    margin: 5px;
+}
+.textBox {
+    width: 300px;
+    height: 40px;
+    border: 1px solid rgb(122, 161, 122);
+    border-radius:5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+label {
+    width: 120px;
+    height: 30px;
+    margin: 8px 0;
+}
+button {
+    background-color: rgb(122, 161, 122);
+    color: white;
+    width: 300px;
+    height: 50px;
+    font-size: 17px;
+    border: none;
+    border-radius: 5px;
+    margin: 20px 0 30px 0;
+}
+.title {
+    font-size: 50px;
+    margin: 40px 0;
+}
+.msg {
+    height: 30px;
+    text-align: center;
+    font-size: 16px;
+    color: red;
+    margin-bottom: 20px;
+}
+
+.idOverlap{
+    width: 80px;
+    margin: 0;
+    height: 40px;
+    font-size: 14px;
+}
+
+#m_id{
+    width: 210px;
+    margin-right: 10px
+}
+
+.info{
+    color: rgb(255, 48, 48);
+}
+
+.registerBtn:hover{
+    font-weight: 600;
+}

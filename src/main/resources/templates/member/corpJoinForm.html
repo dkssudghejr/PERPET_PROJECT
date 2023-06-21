@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout}">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="./css/joinFormStyle.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="wrap" layout:fragment="content">
+            <form action="" id="joinForm">
+                <div id="terms">
+                    <ul class="join_box">
+                        <li class="checkBox check01">
+                            <ul class="clearfix">
+                                <li>이용약관, 개인정보 수집 및 이용에 모두 동의합니다.</li>
+                                <li class="checkAllBtn">
+                                    <input type="checkbox" name="chkAll" id="chkAll">
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="checkBox check02">
+                            <ul class="clearfix">
+                                <li>이용약관 동의(필수)</li>
+                                <li class="checkBtn">
+                                    <input type="checkbox" name="chk"> 
+                                </li>
+                            </ul>
+                            <textarea name="" id="">여러분을 환영합니다. 퍼펫푸리티 서비스 및 제품(이하 ‘서비스’)을 이용해 주셔서 감사합니다. 본 약관은 다양한 퍼펫푸리티 서비스의 이용과 관련하여 퍼펫푸리티 서비스를 제공하는 퍼펫푸리티 주식회사(이하 ‘퍼펫푸리티’)와 이를 이용하는 퍼펫푸리티 서비스 회원(이하 ‘회원’) 또는 비회원과의 관계를 설명하며, 아울러 여러분의 퍼펫푸리티 서비스 이용에 도움이 될 수 있는 유익한 정보를 포함하고 있습니다.
+                            </textarea>
+                        </li>
+                        <li class="checkBox check03">
+                            <ul class="clearfix">
+                                <li>개인정보 수집 및 이용에 대한 안내(필수)</li>
+                                <li class="checkBtn">
+                                    <input type="checkbox" name="chk">
+                                </li>
+                            </ul>   
+                            <textarea name="" id="">여러분을 환영합니다. 퍼펫푸리티 서비스 및 제품(이하 ‘서비스’)을 이용해 주셔서 감사합니다. 본 약관은 다양한 퍼펫푸리티 서비스의 이용과 관련하여 퍼펫푸리티 서비스를 제공하는 퍼펫푸리티 주식회사(이하 ‘퍼펫푸리티’)와 이를 이용하는 퍼펫푸리티 서비스 회원(이하 ‘회원’) 또는 비회원과의 관계를 설명하며, 아울러 여러분의 퍼펫푸리티 서비스 이용에 도움이 될 수 있는 유익한 정보를 포함하고 있습니다.
+                            </textarea>
+                        </li>
+                    </ul>
+                    <ul class="fpmgBtn">
+                        <li><button type="button" class="NBtn">비동의</button></li>
+                        <li><button type="button" class="YBtn">동의</button></li>
+                    </ul>
+                </div><!--#terms-->
+
+                <div class="register" style="display: none;">
+                    <div class="title">회원가입</div>
+        
+                    <p>
+                        <label for="">아이디</label> <input class="textBox" type="text" id="cp_id" th:field="*{cp_id}"
+                            name="cp_id" onblur="checkId()" placeholder="5~12자리의 영소문자와 숫자, -, _ 조합">
+                        <button type="button" id="idOverlap" class="idOverlap" value="N" onclick="fn_idOverlap()">중복확인</button>
+                    </p>
+                    
+                    <p>
+                        <label for="">비밀번호</label> <input class="textBox" type="text" id="m_pw" th:field="*{m_pw}"
+                            name="m_pw" onblur="checkPwd()" placeholder="8~12자리의 영대소문자와 숫자 조합">
+                    </p>  
+                      
+                    <p>
+                        <label for="">업체명</label> <input class="textBox" type="text" id="m_name" th:field="*{m_name}"
+                            name="m_name" onblur="checkName()" placeholder="김그린">
+                    </p>
+                    
+                    <p>
+                        <label for="">전화번호</label> <input class="textBox" type="text" id="m_tel" th:field="*{m_tel}"
+                            name="m_tel" onblur="checkTel()" placeholder="010-0000-0000">
+                    </p>
+                    
+                    <p>
+                        <label for="">주소</label> <input class="textBox" type="text" id="m_addr" th:field="*{m_addr}"
+                            name="m_addr">
+                    </p>
+                    
+                    <p>
+                        <label for="">우편번호</label> <input class="textBox" type="text" id="m_post" th:field="*{m_post}"
+                            name="m_post">
+                    </p>
+                    
+                    <p>
+                        <label for="">사업자 등록 번호</label> <input class="textBox" type="text" id="m_post" th:field="*{m_post}"
+                            name="m_post">
+                    </p>
+
+                    <button class="registerBtn">가입하기</button>
+                </div><!--.register-->
+            </form>
+    </div>
+    <script src="./js/joinForm.js"></script>
+</body>
+</html>
+</body>
+</html>

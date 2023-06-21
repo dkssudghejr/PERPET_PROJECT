@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="./css/mainHomeStyle.css">
+</head>
+<body>
+    <div class="wrap">
+        <div class="mainBanner">
+            <div class="swiper mySwiper slide1">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide" style="background-color: rgb(163, 202, 163);"><img src="./img/banner1.png" alt=""></div>
+                  <div class="swiper-slide" style="background-color: rgb(140, 197, 218);"><img src="./img/banner2.png" alt=""></div>
+                  <div class="swiper-slide" style="background-color: rgb(252, 203, 208);"><img src="./img/banner3.png" alt=""></div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+              </div>
+        </div><!--.mainBanner-->
+        <div class="header">
+            <div class="headerIn">
+            <div class="topLogo">
+                <p><a href=""><img src="./img/topLogo2.png" alt=""></a></p>
+            </div>
+            <div class="logo">
+                <p><a href=""><img src="./img/logo.png" alt=""></a></p>
+            </div>
+            <div class="nav">
+                <ul class="navList">
+                    <li><a href="">베스트</a></li>
+                    <li><a href="">전체상품</a></li>
+                    <li><a href="">증상별 추천</a></li>
+                    <li><a href="">온라인 판매</a></li>
+                    <li><a href="">공지&문의</a></li>
+                    <li><a href="">리뷰이벤트</a></li>
+                </ul>
+            </div><!--.nav-->
+            <div class="member">
+                <ul class="memberList">
+                    <li sec:authorize="isAnonymous()"><a href="/members/login">로그인</a></li>
+                    <li sec:authorize="isAnonymous()"><a href="/members/new">회원가입</a></li>
+                    <li sec:authorize="isAuthenticated()"><a href="/members/logout">로그아웃</a></li>
+                    <li sec:authorize="isAuthenticated()"><a href="">마이페이지</a></li>
+                    <li sec:authorize="isAuthenticated()"><a href="">장바구니</a></li>
+                </ul>
+            </div><!--.memeber-->
+            <form class="searchBar" th:action="@{/}" method="get">
+                <img src="./img/search.png" alt="">
+                <input type="text" name="search" placeholder="제품, 증상을 검색해보세요.">
+            </form>
+        </div><!--.headerIn-->
+        </div><!--.header-->
+        <div class="container">
+            <div class="bestProduct">
+                <h2>BEST 4</h2>
+                <ul class="bestList">
+                    <li>
+                        <a href="">
+                            <img src="./img/img1.png" alt="">
+                            <p class="price">28,000</p>
+                            <p class="productName">상품 이름 영양제 소독약</p>
+                            <span class="sellInfo">
+                                <p class="sellCnt">누적판매 35 ⋅</p>
+                                <p class="wishCnt">찜 57</p>
+                                <p class="reviewCnt">⋅ 리뷰 22</p>
+                            </span>
+                            <p class="madeBy">제조사</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <img src="./img/img1.png" alt="">
+                            <p class="price">28,000</p>
+                            <p class="productName">상품 이름 영양제 소독약</p>
+                            <span class="sellInfo">
+                                <p class="sellCnt">누적판매 35 ⋅</p>
+                                <p class="wishCnt">찜 57</p>
+                                <p class="reviewCnt">⋅ 리뷰 22</p>
+                            </span>
+                            <p class="madeBy">제조사</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <img src="./img/img1.png" alt="">
+                            <p class="price">28,000</p>
+                            <p class="productName">상품 이름 영양제 소독약</p>
+                            <span class="sellInfo">
+                                <p class="sellCnt">누적판매 35 ⋅</p>
+                                <p class="wishCnt">찜 57</p>
+                                <p class="reviewCnt">⋅ 리뷰 22</p>
+                            </span>
+                            <p class="madeBy">제조사</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <img src="./img/img1.png" alt="">
+                            <p class="price">28,000</p>
+                            <p class="productName">상품 이름 영양제 소독약</p>
+                            <span class="sellInfo">
+                                <p class="sellCnt">누적판매 35 ⋅</p>
+                                <p class="wishCnt">찜 57</p>
+                                <p class="reviewCnt">⋅ 리뷰 22</p>
+                            </span>
+                            <p class="madeBy">제조사</p>
+                        </a>
+                    </li>
+                </ul>
+            </div><!--.bestProduct-->
+            <div class="onlineSales">
+                <h2>온라인 구매 가능 상품</h2>
+                <ul class="onlineList">
+                    <li>
+                        <a href="">
+                            <img src="./img/img1.png" alt="">
+                            <p class="price">28,000</p>
+                            <p class="productName">상품 이름 영양제 소독약</p>
+                            <span class="sellInfo">
+                                <p class="sellCnt">누적판매 35 ⋅</p>
+                                <p class="wishCnt">찜 57</p>
+                                <p class="reviewCnt">⋅ 리뷰 22</p>
+                            </span>
+                            <p class="madeBy">제조사</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <img src="./img/img1.png" alt="">
+                            <p class="price">28,000</p>
+                            <p class="productName">상품 이름 영양제 소독약</p>
+                            <span class="sellInfo">
+                                <p class="sellCnt">누적판매 35 ⋅</p>
+                                <p class="wishCnt">찜 57</p>
+                                <p class="reviewCnt">⋅ 리뷰 22</p>
+                            </span>
+                            <p class="madeBy">제조사</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <img src="./img/img1.png" alt="">
+                            <p class="price">28,000</p>
+                            <p class="productName">상품 이름 영양제 소독약</p>
+                            <span class="sellInfo">
+                                <p class="sellCnt">누적판매 35 ⋅</p>
+                                <p class="wishCnt">찜 57</p>
+                                <p class="reviewCnt">⋅ 리뷰 22</p>
+                            </span>
+                            <p class="madeBy">제조사</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <img src="./img/img1.png" alt="">
+                            <p class="price">28,000</p>
+                            <p class="productName">상품 이름 영양제 소독약</p>
+                            <span class="sellInfo">
+                                <p class="sellCnt">누적판매 35 ⋅</p>
+                                <p class="wishCnt">찜 57</p>
+                                <p class="reviewCnt">⋅ 리뷰 22</p>
+                            </span>
+                            <p class="madeBy">제조사</p>
+                        </a>
+                    </li>
+                </ul>
+            </div><!--.onlineSales-->
+            <div class="contents1">
+                <div class="notice">
+                    <h2><img src="./img/notice.png" alt="">공지사항</h2>
+                    <ul class="noticeList">
+                        <li>공지사항 1</li>
+                        <li>공지사항 2</li>
+                        <li>공지사항 3</li>
+                        <li>공지사항 4</li>
+                    </ul>
+                </div><!--.notice-->
+                <div class="recommendProd">
+                    <div class="swiper mySwiper slide2" id="slide2_wrap">
+                        <div class="swiper-wrapper">
+                          <div class="swiper-slide" id="slide2"><img src="./img/recommend1.jpg" alt="" class="img2"></div>
+                          <div class="swiper-slide" id="slide2"><img src="./img/recommend2.jpg" alt="" class="img2"></div>
+                          <div class="swiper-slide" id="slide2"><img src="./img/recommend3.jpg" alt="" class="img2"></div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                      </div>
+                </div><!--.recommendProd-->
+            </div><!--.contents1-->
+            <div class="contents2">
+                <div class="townPharmacy">
+                    <a href=""><img src="./img/townPharmacy.jpg" alt=""></a>
+                </div><!--.townPharmacy-->
+                <div class="a">
+                    
+                </div><!-- -->
+            </div><!--.contents2-->
+        </div><!--.container-->
+        <div class="footer">
+            <div class="footerTop">
+                <a href="">브랜드스토리</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="">쇼핑가이드</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="" class="privacyPolicy">개인정보처리방침</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="">이용약관</a>
+            </div>
+            <div class="footerBottom">
+                <div class="leftFooter">
+                    <div class="footerLogo"><a href=""><img src="./img/footerLogo.png" alt="" ></a></div>
+                    <ul>
+                        <li class="ftTitle">퍼펫푸리티</li>
+                        <li>대표 : 김미미</li>
+                        <li>주소 : 울산광역시 남구 삼산중로100번길 26 4층</li>
+                        <li>개인정보관리 책임자 : 김샛별 (dkssudghejr@naver.com)</li>
+                        <li>사업자 등록번호 : 110-03-21111</li>
+                        <li>통신판매업 신고 : 제 성동 - 1234호 <a href="">[사업자 정보 확인]</a></li>
+                    </ul>
+                </div><!--.leftFooter-->
+                <div class="rightFooter">
+                    <ul class="cs">
+                        <li class="ftTitle">고객센터 C/S Center</li>
+                        <li>전화 : 052-123-1234</li>
+                        <li>팩스 : 052-1144-1525</li>
+                        <li>이메일 : dkssudghejr@naver.com</li>
+                        <li>카카오톡 ID : dkssudghejr</li>
+                        <li>오전 9시부터 오후 6시까지 상담 가능</li>
+                    </ul>
+                    <ul class="bankInfo">
+                        <li class="ftTitle">퍼펫푸리티 무통장 입금 계좌번호 (예금주 : 김그린)</li>
+                        <li>국민은행 : 112211 - 01 - 011888</li>
+                        <li>우리은행 : 1002 - 052 - 123444</li>
+                        <li>하나은행 : 321 - 999943 - 22213</li>
+                        <li>농협 : 302 - 12 - 124456</li>
+                    </ul>
+                </div><!--.rightFooter-->
+            </div><!--.footerBottom-->
+        </div><!--.footer-->
+    </div><!--.wrap-->
+    <script src="./js/mainHome.js"></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>Thymeleaf 링크 예제</h2>
+	<div>
+		<a th:href="@{/thymeleaf/ex1}">예제1 페이지로 이동</a>
+	</div>
+	<div>
+		<a th:href="@{https://www.naver.com}">naver로 이동</a>
+	</div>
+	
+	<div>
+		<a th:href="@{/thymeleaf/ex6(param1='파라미터 데이터1', param2='파라미터 데이터2')}">타임리프 파라미터 전달</a>
+	</div>
+</body>
+</html>

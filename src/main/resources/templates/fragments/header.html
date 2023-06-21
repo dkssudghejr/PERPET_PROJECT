@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+
+<body>
+    <div class="header" th:fragment="header">
+        <div class="headerIn">
+            <div class="topLogo">
+                <p><a href="/"><img src="/img/topLogo2.png" alt=""></a></p>
+            </div>
+            <div class="logo">
+                <p><a href="/"><img src="/img/logo.png" alt=""></a></p>
+            </div>
+            <div class="nav">
+                <ul class="navList">
+                    <li><a href="">베스트</a></li>
+                    <li><a href="">전체상품</a></li>
+                    <li><a href="">증상별 추천</a></li>
+                    <li><a href="">온라인 판매</a></li>
+                    <li><a href="">공지&문의</a></li>
+                    <li><a href="">리뷰이벤트</a></li>
+                </ul>
+            </div><!--.nav-->
+            <div class="member">
+                <ul class="memberList">
+                    <li sec:authorize="isAnonymous()"><a href="/members/login">로그인</a></li>
+                    <li sec:authorize="isAnonymous()"><a href="/members/new">회원가입</a></li>
+                    <li sec:authorize="isAuthenticated()"><a href="/members/logout">로그아웃</a></li>
+                    <li sec:authorize="isAuthenticated()"><a href="">마이페이지</a></li>
+                    <li sec:authorize="isAuthenticated()"><a href="">장바구니</a></li>
+                </ul>
+            </div><!--.memeber-->
+            <form class="searchBar" th:action="@{/}" method="get">
+                <img src="/img/search.png" alt="">
+                <input type="text" name="search" placeholder="제품, 증상을 검색해보세요.">
+            </form>
+        </div><!--.headerIn-->
+    </div><!--.header-->
+</body>
+</html>

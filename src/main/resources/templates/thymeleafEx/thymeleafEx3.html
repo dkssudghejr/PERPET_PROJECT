@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>상품 리스트 출력</h2>
+	<table border="1">
+		<thead>
+			<tr>
+				<td>순번</td>
+				<td>상품명</td>
+				<td>상품설명</td>
+				<td>가격</td>
+				<td>등록일</td>
+			</tr>
+		</thead>
+		<tbody>
+			<!-- 현재상태변수는 생략가능. 생략시에는 자동으로 '변수명+Stat'로 설정됨 -->
+			<!-- 		변수,		 현재상태변수 : 출력하고자하는 컬렉션 -->		
+			<!-- tr th:each="itemDto, status : ${itemDtoList}" -->	
+			<tr th:each="itemDto : ${itemDtoList}">
+				<td th:text="${itemDtoStat.index}"></td><!-- index : 0부터 시작 count : 1부터 -->
+				<td th:text="${itemDto.itemName}"></td>
+				<td th:text="${itemDto.itemDetail}"></td>
+				<td th:text="${itemDto.price}"></td>
+				<td th:text="${itemDto.regTime}"></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>
