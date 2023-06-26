@@ -11,31 +11,24 @@ import lombok.ToString;
 
 @Getter @Setter
 @ToString
-public class MemberFormDto {
+public class CompanyFormDto {
 	
 	@NotBlank(message = "이메일를 입력해주세요.")
-	private String memail;
+	private String cpemail;
 	
 	@NotEmpty(message = "패스워드를 입력해주세요.")
 	@Length(min=8, max=15, message="비밀번호는 8~15글자로 입력하세요.")
-	private String m_pw;
+	private String cp_pw;
 	
-	@NotEmpty(message = "이름을 입력해주세요.")
-	private String m_name;
+	@NotEmpty(message = "업체명을 입력해주세요.")
+	private String cp_name;
 	
 	@NotEmpty(message = "전화번호를 입력해주세요.")
-	private String m_tel;
+	private String cp_tel;
 	
 	@NotEmpty(message = "주소를 입력해주세요.")
-	private String m_addr;
+	private String cp_addr;
 	
-	/*
-	 * private LocalDateTime m_rdate;
-	 * 
-	 * private String m_terms;
-	 * 
-	 * private String m_drop;
-	 */
-	
-	
+	@NotEmpty(message = "사업자 등록 번호는 필수입니다.")
+	private String cp_registnum;
 }

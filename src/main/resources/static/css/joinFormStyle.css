@@ -102,7 +102,7 @@ button {
     font-size: 14px;
 }
 
-#m_id{
+#memail, #cpemail{
     width: 210px;
     margin-right: 10px
 }

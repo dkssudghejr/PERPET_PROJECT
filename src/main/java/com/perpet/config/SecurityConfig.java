@@ -2,6 +2,8 @@ package com.perpet.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -21,7 +23,7 @@ public class SecurityConfig{
 			//로그인 설정
 			.loginPage("/members/login") //로그인 페이지 url 설정
 			.defaultSuccessUrl("/") //로그인 성공시 이동할 url 설정
-			.usernameParameter("email") //로그인시 사용할 파라미터 이름
+			.usernameParameter("memail") //로그인시 사용할 파라미터 이름
 			.failureUrl("/members/login/error") //로그인 실패시 이동할 url 설정
 			
 			.and()
@@ -35,10 +37,10 @@ public class SecurityConfig{
 			http.authorizeRequests()
 			//모든 사용자가 인증 없이 해당 경로에 접근할 수 있도록 설정
 			.mvcMatchers("/css/**", "/js/**", "/img/**").permitAll()
-			.mvcMatchers("/", "/members/**", "/item/**", "/images/**").permitAll()
+			.mvcMatchers("/", "/members/**", "/product/**", "/images/**").permitAll()
 			//admin으로 시작하는 경로는 해당 계정이 관리자일때만 접근 가능하도록 설정
 			.mvcMatchers("/admin/**").hasRole("ADMIN")
-			.mvcMatchers("/corps/**").hasRole("CORP")
+			.mvcMatchers("/company/**").hasRole("COMPANY")
 			//나머지는 모두다 인증을 요구
 			.anyRequest().authenticated();
 			
@@ -56,6 +58,12 @@ public class SecurityConfig{
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder(); //해시함수(비밀번호를 암호화)
+	}
+	
+	@Bean
+	public AuthenticationManager authenticationManager(
+				AuthenticationConfiguration authenticationConfiguration) throws Exception {
+		return authenticationConfiguration.getAuthenticationManager();
 	}
 	
 }

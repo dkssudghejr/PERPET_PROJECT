@@ -8,51 +8,53 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
     <link rel="stylesheet" href="/css/joinFormStyle.css">
-    <script src="/js/joinForm.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
 <body>
     <!-- 사용자 CSS 추가 -->
-<th:block layout:fragment="css">
-
-    <style>
-        .fieldError {
-            color: #bd2130;
-        }
-    </style>
-</th:block>
-
-<!-- 사용자 스크립트 추가 -->
-<th:block layout:fragment="script" >
-
-	<!-- 타임리프를 활용한 script문 -->
-    <script th:inline="javascript">
-	    $(document).ready(function(){
-	    	
-	        var errorMessage = /*[[${errorMessage}]]*/ "";
-	        if(errorMessage != null){
-	            alert(errorMessage);
+	<th:block layout:fragment="css">
+	
+	    <style>
+	        .fieldError {
+	            color: #bd2130;
 	        }
-	    });
-    </script>
-
-</th:block>
+	    </style>
+	</th:block>
+	
+	<!-- 사용자 스크립트 추가 -->
+	<th:block layout:fragment="script" >
+	
+		<!-- 타임리프를 활용한 script문 -->
+	    <script th:inline="javascript">
+		    $(document).ready(function(){
+		    	
+		        var errorMessage = /*[[${errorMessage}]]*/ "";
+		        if(errorMessage != null){
+		            alert(errorMessage);
+		        }
+		    });
+	    </script>
+	
+	</th:block>
         <div class="wrap" layout:fragment="content">
             <form action="/members/newm" role="form" method="post"  th:object="${memberFormDto}" id="joinForm">
                 <div class="register">
                     <div class="title">회원가입</div>
                     <div id="msg" class="msg"></div>
                     <p>
-                        <label for="">아이디</label> <input class="textBox" type="text" id="m_id" th:field="*{m_id}"
-                            name="m_id" placeholder="5~12자리의 영소문자와 숫자, -, _ 조합">
+                        <label for="">이메일</label> <input class="textBox" type="text" id="memail" th:field="*{memail}"
+                            name="memail" placeholder="5~12자리의 영소문자와 숫자, -, _ 조합">
                         <button type="button" id="idOverlap" class="idOverlap" value="N" onclick="fn_idOverlap()">중복확인</button>
                     </p>
-                    <p th:if="${#fields.hasErrors('m_id')}" th:errors="*{m_id}" class="fieldError">Incorrect data</p>
+                    <p th:if="${#fields.hasErrors('memail')}" th:errors="*{memail}" class="fieldError">Incorrect data</p>
                     <p>
-                        <label for="">비밀번호</label> <input class="textBox" type="text" id="m_pw" th:field="*{m_pw}"
+                        <label for="">비밀번호</label> <input class="textBox" type="password" id="m_pw" th:field="*{m_pw}"
                            name="m_pw"placeholder="8~12자리의 영대소문자와 숫자 조합">
                     </p>  
-                    <p th:if="${#fields.hasErrors('m_pw')}" th:errors="*{m_pw}" class="fieldError">Incorrect data</p>       
+                    <p th:if="${#fields.hasErrors('m_pw')}" th:errors="*{m_pw}" class="fieldError">Incorrect data</p>  
+                    <p>
+                        <label for="">비밀번호 확인</label> <input class="textBox" type="password" >
+                    </p>     
                     <p>
                         <label for="">이름</label> <input class="textBox" type="text" id="m_name" th:field="*{m_name}"
                             name="m_name" placeholder="김그린">
@@ -74,6 +76,5 @@
                 <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
             </form>
         </div>
-    <script src="./js/joinForm.js"></script>
     </body>
 </html>

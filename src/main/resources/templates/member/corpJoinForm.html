@@ -4,60 +4,81 @@
       layout:decorate="~{layouts/layout}">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
-    <link rel="stylesheet" href="./css/joinFormStyle.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="/css/joinFormStyle.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
 <body>
+	    <!-- 사용자 CSS 추가 -->
+	<th:block layout:fragment="css">
+	
+	    <style>
+	        .fieldError {
+	            color: #bd2130;
+	        }
+	    </style>
+	</th:block>
+	
+	<!-- 사용자 스크립트 추가 -->
+	<th:block layout:fragment="script" >
+	
+		<!-- 타임리프를 활용한 script문 -->
+	    <script th:inline="javascript">
+		    $(document).ready(function(){
+		    	
+		        var errorMessage = /*[[${errorMessage}]]*/ "";
+		        if(errorMessage != null){
+		            alert(errorMessage);
+		        }
+		    });
+	    </script>
+	
+	</th:block>
     <div class="wrap" layout:fragment="content">
-            <form action="" id="joinForm">
+            <form  action="/members/newc" role="form" method="post" th:object="${companyFormDto}" id="joinForm">
                 <div class="register">
                     <div class="title">회원가입</div>
         
                     <p>
-                        <label for="">아이디</label> <input class="textBox" type="text" id="cp_id" th:field="*{cp_id}"
-                            name="cp_id" onblur="checkId()" placeholder="5~12자리의 영소문자와 숫자, -, _ 조합">
+                        <label for="">이메일</label> <input class="textBox" type="text" id="cpemail" th:field="*{cpemail}"
+                            name="cpemail" onblur="checkId()" placeholder="5~12자리의 영소문자와 숫자, -, _ 조합">
                         <button type="button" id="idOverlap" class="idOverlap" value="N" onclick="fn_idOverlap()">중복확인</button>
                     </p>
-                    
+                    <p th:if="${#fields.hasErrors('cpemail')}" th:errors="*{cpemail}" class="fieldError">Incorrect data</p>
                     <p>
-                        <label for="">비밀번호</label> <input class="textBox" type="text" id="m_pw" th:field="*{m_pw}"
-                            name="m_pw" onblur="checkPwd()" placeholder="8~12자리의 영대소문자와 숫자 조합">
+                        <label for="">비밀번호</label> <input class="textBox" type="text" id="cp_pw" th:field="*{cp_pw}"
+                            name="cp_pw" onblur="checkPwd()" placeholder="8~12자리의 영대소문자와 숫자 조합">
                     </p>  
-                      
+                    <p th:if="${#fields.hasErrors('cp_pw')}" th:errors="*{cp_pw}" class="fieldError">Incorrect data</p>
                     <p>
-                        <label for="">업체명</label> <input class="textBox" type="text" id="m_name" th:field="*{m_name}"
-                            name="m_name" onblur="checkName()" placeholder="김그린">
+                        <label for="">업체명</label> <input class="textBox" type="text" id="cp_name" th:field="*{cp_name}"
+                            name="cp_name" onblur="checkName()" placeholder="김그린">
                     </p>
+                    <p th:if="${#fields.hasErrors('cp_name')}" th:errors="*{cp_name}" class="fieldError">Incorrect data</p>
+                    <p>
+                        <label for="">전화번호</label> <input class="textBox" type="text" id="cp_tel" th:field="*{cp_tel}"
+                            name="cp_tel" onblur="checkTel()" placeholder="052-0000-0000">
+                    </p>
+                    <p th:if="${#fields.hasErrors('cp_tel')}" th:errors="*{cp_tel}" class="fieldError">Incorrect data</p>
+                    <p>
+                        <label for="">주소</label> <input class="textBox" type="text" id="cp_addr" th:field="*{cp_addr}"
+                            name="cp_addr">
+                    </p>
+                    <p th:if="${#fields.hasErrors('cp_addr')}" th:errors="*{cp_addr}" class="fieldError">Incorrect data</p>
+                    <p>
+                        <label for="">사업자 등록 번호</label> <input class="textBox" type="text" id="cp_registnum" th:field="*{cp_registnum}"
+                            name="cp_registnum" placeholder="정확하게 입력해주세요.">
+                    </p>
+					<p th:if="${#fields.hasErrors('cp_registnum')}" th:errors="*{cp_registnum}" class="fieldError">Incorrect data</p>
+					
+                    <button class="registerBtn" type="submit">가입하기</button>
                     
-                    <p>
-                        <label for="">전화번호</label> <input class="textBox" type="text" id="m_tel" th:field="*{m_tel}"
-                            name="m_tel" onblur="checkTel()" placeholder="010-0000-0000">
-                    </p>
-                    
-                    <p>
-                        <label for="">주소</label> <input class="textBox" type="text" id="m_addr" th:field="*{m_addr}"
-                            name="m_addr">
-                    </p>
-                    
-                    <p>
-                        <label for="">우편번호</label> <input class="textBox" type="text" id="m_post" th:field="*{m_post}"
-                            name="m_post">
-                    </p>
-                    
-                    <p>
-                        <label for="">사업자 등록 번호</label> <input class="textBox" type="text" id="m_post" th:field="*{m_post}"
-                            name="m_post">
-                    </p>
-
-                    <button class="registerBtn">가입하기</button>
                 </div><!--.register-->
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
             </form>
     </div>
-    <script src="./js/joinForm.js"></script>
 </body>
 </html>
 </body>

@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.perpet.entity.Member;
 
 public interface MemberRepository extends JpaRepository<Member, String>{
-	Optional<Member> findById(String m_id);
+	Optional<Member> findByMemail(String memail);
 }
