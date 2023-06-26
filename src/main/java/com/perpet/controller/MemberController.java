@@ -9,9 +9,13 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.perpet.dto.CompanyFormDto;
 import com.perpet.dto.MemberFormDto;
+import com.perpet.entity.Company;
 import com.perpet.entity.Member;
+import com.perpet.service.CompanyService;
 import com.perpet.service.MemberService;
 
 import lombok.RequiredArgsConstructor;
@@ -22,6 +26,8 @@ import lombok.RequiredArgsConstructor;
 public class MemberController {
 	
 	private final MemberService memberService;
+	
+	private final CompanyService companyService;
 	
 	private final PasswordEncoder passwordEncoder;
 	
@@ -40,9 +46,10 @@ public class MemberController {
 	
 	@GetMapping("/newc")
 	public String corpTerms(Model model) {
-		model.addAttribute("memberFormDto", new MemberFormDto());
+		model.addAttribute("companyFormDto", new CompanyFormDto());
 		return "member/termsForm";
 	}
+	
 	@GetMapping("/newm/join")
 	public String memberForm(Model model) {
 		model.addAttribute("memberFormDto", new MemberFormDto());
@@ -51,7 +58,7 @@ public class MemberController {
 	
 	@GetMapping("/newc/join")
 	public String corpForm(Model model) {
-		model.addAttribute("memberFormDto", new MemberFormDto());
+		model.addAttribute("companyFormDto", new CompanyFormDto());
 		return "member/corpJoinForm";
 	}
 	
@@ -74,14 +81,14 @@ public class MemberController {
 	}
 	
 	@PostMapping("/newc")
-	public String newCorp(@Valid MemberFormDto memberFormDto, BindingResult bindingResult, Model model) {
+	public String newCorp(@Valid CompanyFormDto companyFormDto, BindingResult bindingResult, Model model) {
 		if(bindingResult.hasErrors()) {
 			return "member/corpJoinForm";
 		}
 		
 		try {
-			Member member = Member.createMember(memberFormDto, passwordEncoder);
-			memberService.saveMember(member);
+			Company company = Company.createCompany(companyFormDto, passwordEncoder);
+			companyService.saveCompany(company);
 		} catch(IllegalStateException e) {
 			model.addAttribute("errorMessage", e.getMessage());
 			return "member/corpJoinForm";
@@ -100,4 +107,11 @@ public class MemberController {
 		model.addAttribute("loginErrorMsg", "아이디 또는 비밀번호를 확인하세요.");
 		return "/member/loginForm";
 	}
+	
+	/*
+	 * @PostMapping("/members/login") public String login(@RequestParam("m_email")
+	 * String email, @RequestParam("m_pw") String password) {
+	 * 
+	 * }
+	 */
 }

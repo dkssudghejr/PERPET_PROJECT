@@ -30,7 +30,7 @@ public class MemberServiceTest {
 	//회원정보를 입력한 member엔티티를 만드는 메서드 작성
 	public Member createMember() {
 		MemberFormDto memberFormDto = new MemberFormDto();
-		memberFormDto.setM_id("hello");
+		memberFormDto.setMemail("hello");
 		memberFormDto.setM_pw("12341234");
 		memberFormDto.setM_name("김그린");
 		memberFormDto.setM_tel("010-1111-1111");
@@ -49,7 +49,7 @@ public class MemberServiceTest {
 		Member savedMember = memberService.saveMember(member);
 		//저장하려고 요청했던 값과 실제 저장된 데이터를 비교
 					// 기대값			  ,	실제 저장된 값
-		assertEquals(member.getM_id(), savedMember.getM_id());
+		assertEquals(member.getMemail(), savedMember.getMemail());
 		assertEquals(member.getM_pw(), savedMember.getM_pw());
 		assertEquals(member.getM_name(), savedMember.getM_name());
 		assertEquals(member.getM_tel(), savedMember.getM_tel());

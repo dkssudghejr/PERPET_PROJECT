@@ -29,8 +29,8 @@ import lombok.ToString;
 public class Member {
 	
 	@Id
-	@Column(name="m_id")
-	private String m_id;
+	@Column(name="m_email")
+	private String memail;
 	
 	private String m_pw;
 	
@@ -56,8 +56,9 @@ public class Member {
 	//Member엔티티 생성
 	public static Member createMember(MemberFormDto memberFormDto, PasswordEncoder passwordEncoder) {
 		Member member = new Member();
-		member.setM_id(memberFormDto.getM_id());
-		member.setM_pw(memberFormDto.getM_pw());
+		member.setMemail(memberFormDto.getMemail());
+		String password = passwordEncoder.encode(memberFormDto.getM_pw());
+		member.setM_pw(password);
 		member.setM_name(memberFormDto.getM_name());
 		member.setM_tel(memberFormDto.getM_tel());
 		member.setM_addr(memberFormDto.getM_addr());
@@ -67,8 +68,6 @@ public class Member {
 		 * member.setM_drop(memberFormDto.getM_drop());
 		 */
 		
-		String pw = passwordEncoder.encode(memberFormDto.getM_pw());
-		member.setM_pw(pw);
 		member.setRole(Role.USER);
 		return member;
 	}
