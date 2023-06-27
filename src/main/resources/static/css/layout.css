@@ -72,7 +72,7 @@ input{
 
 .member .memberList{
     display: flex;
-    width: 230px;
+    width: 260px;
     font-size: 13px;
     justify-content: right;
     position: absolute;

@@ -29,13 +29,9 @@ public class MemberFormDto {
 	@NotEmpty(message = "주소를 입력해주세요.")
 	private String addr;
 	
-	/*
-	 * private LocalDateTime m_rdate;
-	 * 
-	 * private String m_terms;
-	 * 
-	 * private String m_drop;
-	 */
+	private String registnum;
+	
+	private String approval;
 	
 	
 }

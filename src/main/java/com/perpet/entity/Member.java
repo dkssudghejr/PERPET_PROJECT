@@ -21,48 +21,54 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Table(name="member")
+@Table(name = "member")
 @Getter
 @Setter
 @ToString
 @DynamicInsert
 public class Member {
-	
+
 	@Id
-	@Column(name="m_email")
+	@Column(name = "m_email")
 	private String email;
-	
-	@Column(name="m_pw")
+
+	@Column(name = "m_pw")
 	private String pw;
-	
-	@Column(name="m_name")
+
+	@Column(name = "m_name")
 	private String name;
-	
+
 	@Column(unique = true, name = "m_tel")
 	private String tel;
-	
-	@Column(name="m_addr")
+
+	@Column(name = "m_addr")
 	private String addr;
-	
-	
-	@Column(name="m_rdate")
+
+	// 사업자 등록번호
+	@Column(name = "m_registnum")
+	private String registnum;
+
+	@Column(name = "m_rdate")
 	@ColumnDefault("SYSDATE")
 	private LocalDateTime rdate;
-	
-	
-	@Column(name="m_terms")
+
+	@Column(name = "m_terms")
 	@ColumnDefault("'Y'")
 	private String terms;
-	
-	
-	@Column(name="m_drop")
+
+	@Column(name = "m_drop")
 	@ColumnDefault("'N'")
 	private String drop;
-	
+
+	// 관리자 승인
+	@Column(name = "m_approval")	
+	@ColumnDefault("'Y'")
+	private String approval;
+
 	@Enumerated(EnumType.STRING)
 	private Role role;
-	
-	//Member엔티티 생성
+
+	// Member엔티티 생성
 	public static Member createMember(MemberFormDto memberFormDto, PasswordEncoder passwordEncoder) {
 		Member member = new Member();
 		member.setEmail(memberFormDto.getEmail());
@@ -71,13 +77,24 @@ public class Member {
 		member.setName(memberFormDto.getName());
 		member.setTel(memberFormDto.getTel());
 		member.setAddr(memberFormDto.getAddr());
-		/*
-		 * member.setM_rdate(memberFormDto.getM_rdate());
-		 * member.setM_terms(memberFormDto.getM_terms());
-		 * member.setM_drop(memberFormDto.getM_drop());
-		 */
-		
+		member.setRegistnum("NULL");
+
 		member.setRole(Role.USER);
+		member.setApproval("Y");
+		return member;
+	}
+	public static Member createCompany(MemberFormDto memberFormDto, PasswordEncoder passwordEncoder) {
+		Member member = new Member();
+		member.setEmail(memberFormDto.getEmail());
+		String password = passwordEncoder.encode(memberFormDto.getPw());
+		member.setPw(password);
+		member.setName(memberFormDto.getName());
+		member.setTel(memberFormDto.getTel());
+		member.setAddr(memberFormDto.getAddr());
+		member.setRegistnum(memberFormDto.getRegistnum());
+		
+		member.setRole(Role.COMPANY);		
+		member.setApproval("N");
 		return member;
 	}
 }
