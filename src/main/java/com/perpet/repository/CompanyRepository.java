@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.perpet.entity.Company;
 
 public interface CompanyRepository extends JpaRepository<Company, String>{
-	Optional<Company> findByCpemail(String cpemail);
+	Optional<Company> findByEmail(String email);
 }

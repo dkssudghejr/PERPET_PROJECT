@@ -25,8 +25,8 @@
         <h3 id="title">Login</h3>
         <p th:if="${loginErrorMsg}" class="error" th:text="${loginErrorMsg}"></p>
 		<!--${cookie.id.value} : 쿠키중에서 이름이 id인 쿠키의 value를 가져옴 -->
-        <input type="email" th:for="memail" name="memail" placeholder="이메일을 입력해주세요." autofocus class="id" id="memail">
-        <input type="password" th:for="m_pw" name="m_pw" placeholder="비밀번호를 입력해주세요." class="pw" id="m_pw">
+        <input type="email" th:for="email" name="email" placeholder="이메일을 입력해주세요." autofocus class="id" id="email">
+        <input type="password" th:for="pw" name="pw" placeholder="비밀번호를 입력해주세요." class="pw" id="pw">
         
         <button>로그인</button>
         <div>

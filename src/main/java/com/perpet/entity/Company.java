@@ -30,46 +30,55 @@ public class Company {
 
 	@Id
 	@Column(name="cp_email")
-	private String cpemail;
+	private String email;
 	
-	private String cp_pw;
+	@Column(name="cp_pw")
+	private String pw;
 	
-	private String cp_name;
+	@Column(name="cp_name")
+	private String name;
 	
-	@Column(unique = true)
-	private String cp_tel;
+	@Column(unique = true, name="cp_tel")
+	private String tel;
 	
-	private String cp_addr;
+	@Column(name="cp_addr")
+	private String addr;
 	
 	//사업자 등록번호
-	@Column(unique = true)
-	private String cp_registnum;
+	@Column(unique = true, name="cp_registnum")
+	private String registnum;
+
 	
+	@Column(name="cp_rdate")
 	@ColumnDefault("SYSDATE")
-	private LocalDateTime cp_rdate;
+	private LocalDateTime rdate;
 	
+	
+	@Column(name="cp_terms")
 	@ColumnDefault("'Y'")
-	private String cp_terms;
+	private String terms;
 	
+	
+	@Column(name="cp_drop")
 	@ColumnDefault("'N'")
-	private String cp_drop;
+	private String drop;
 	
 	//관리자 승인
 	@ColumnDefault("'N'")
-	private String cp_approval;
+	private String approval;
 	
 	@Enumerated(EnumType.STRING)
 	private Role role;
 	
 	public static Company createCompany(CompanyFormDto companyFormDto, PasswordEncoder passwordEncoder) {
 		Company company = new Company();
-		company.setCpemail(companyFormDto.getCpemail());
-		String password = passwordEncoder.encode(companyFormDto.getCp_pw());
-		company.setCp_pw(password);
-		company.setCp_name(companyFormDto.getCp_name());
-		company.setCp_tel(companyFormDto.getCp_tel());
-		company.setCp_addr(companyFormDto.getCp_addr());
-		company.setCp_registnum(companyFormDto.getCp_registnum());
+		company.setEmail(companyFormDto.getEmail());
+		String password = passwordEncoder.encode(companyFormDto.getPw());
+		company.setPw(password);
+		company.setName(companyFormDto.getName());
+		company.setTel(companyFormDto.getTel());
+		company.setAddr(companyFormDto.getAddr());
+		company.setRegistnum(companyFormDto.getRegistnum());
 		
 		company.setRole(Role.COMPANY);
 		return company;
