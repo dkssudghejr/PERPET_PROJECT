@@ -52,10 +52,12 @@ public class Member {
 	@ColumnDefault("SYSDATE")
 	private LocalDateTime rdate;
 
+	//약관 동의 여부
 	@Column(name = "m_terms")
 	@ColumnDefault("'Y'")
 	private String terms;
 
+	//탈퇴 여부
 	@Column(name = "m_drop")
 	@ColumnDefault("'N'")
 	private String drop;
@@ -65,6 +67,7 @@ public class Member {
 	@ColumnDefault("'Y'")
 	private String approval;
 
+	//회원 유형
 	@Enumerated(EnumType.STRING)
 	private Role role;
 
