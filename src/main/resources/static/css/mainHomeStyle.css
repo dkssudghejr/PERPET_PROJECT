@@ -137,6 +137,10 @@ input{
     font-weight: bold;
 }
 
+.role{
+	font-weight: bold;
+}
+
 /* 검색창 위치 못정함 */
 .searchBar{
     background-color: #f9f9f9;
@@ -179,7 +183,6 @@ input{
 }
 
 .bestList img{
-    border-radius: 30px;
     margin-bottom: 15px;
 }
 
@@ -211,7 +214,6 @@ input{
 }
 
 .onlineList img{
-    border-radius: 30px;
     margin-bottom: 15px;
 }
 

@@ -1,135 +1,144 @@
 @charset "UTF-8";
 
 @font-face {
-    font-family: 'NanumSquareNeo-Variable';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
+	font-family: 'NanumSquareNeo-Variable';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2')
+		format('woff2');
+	font-weight: normal;
+	font-style: normal;
 }
 
-*{
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    box-sizing: border-box;
+* {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	box-sizing: border-box;
 }
 
-a{
-    color: #333;
-    text-decoration: none;
+a {
+	color: #333;
+	text-decoration: none;
 }
 
-body{
-    font-family: 'NanumSquareNeo-Variable',serif;
-    font-size: 16px;
-    line-height: 23px;
-    color: #333;
+body {
+	font-family: 'NanumSquareNeo-Variable', serif;
+	font-size: 16px;
+	line-height: 23px;
+	color: #333;
 }
 
-img{
-    vertical-align: top;
+img {
+	vertical-align: top;
 }
 
-input{
-    outline: none;
+input {
+	outline: none;
 }
 
-.wrap{
-    width: 100%;
-    min-width: 1280px;
+.wrap {
+	width: 100%;
+	min-width: 1280px;
 }
 
-.clearfix::after{
-    content: "";
-    display: block;
-    clear: both;
+.clearfix::after {
+	content: "";
+	display: block;
+	clear: both;
 }
 
-#joinForm{
-    width: 460px;
-    margin: 100px auto 150px;
+#joinForm {
+	width: 460px;
+	margin: 100px auto 150px;
 }
 
-ul.join_box{
-    border: 1px solid #ddd;
-    background-color: #fff;
+ul.join_box {
+	border: 1px solid #ddd;
+	background-color: #fff;
 }
 
-.checkBox,.checkBox>ul{
-    position: relative;
+.checkBox, .checkBox>ul {
+	position: relative;
 }
 
-.checkBox>ul>li{
-    float: left;
+.checkBox>ul>li {
+	float: left;
 }
 
-.checkBox>ul>li:first-child{
-    width: 85%;padding: 15px;
-    font-weight: 600;
-    color: #777;
+.checkBox>ul>li:first-child {
+	width: 85%;
+	padding: 15px;
+	font-weight: 600;
+	color: #777;
 }
 
-.checkBox>ul>li:nth-child(2){
-    position: absolute;
-    top: 50%;right: 30px;
-    margin-top: -12px;
+.checkBox>ul>li:nth-child(2) {
+	position: absolute;
+	top: 50%;
+	right: 30px;
+	margin-top: -12px;
 }
 
-.checkBox textarea{
-    width: 96%;
-    height: 90px; 
-    margin: 0 2%;
-    background-color: #f7f7f7;
-    color: #888; 
-    border: none;
-    padding: 5px;
+.checkBox textarea {
+	width: 96%;
+	height: 90px;
+	margin: 0 2%;
+	background-color: #f7f7f7;
+	color: #888;
+	border: none;
+	padding: 5px;
 }
 
-.info{
-	text-align:center;
+.info {
+	text-align: center;
 	margin-bottom: 5px;
 	color: red;
 }
-.info i{
+
+.info i {
 	font-size: 18px;
 }
 
-.fpmgBtn{
-    margin-top: 15px;
+.fpmgBtn {
+	margin-top: 15px;
 }
 
-.fpmgBtn>li{
-    float: left;
-    width: 50%;
-    height: 60px;
+.fpmgBtn>li {
+	float: left;
+	width: 50%;
+	height: 60px;
 }
 
-.fpmgBtn>li>button{
-    display: block; 
-    width: 100%;
-    height: 100%; 
-    font-size: 20px;
-    text-align: center;
-    line-height: 60px;
-    border: none;
+.fpmgBtn>li>button {
+	display: block;
+	width: 100%;
+	height: 100%;
+	font-size: 20px;
+	text-align: center;
+	line-height: 60px;
+	border: none;
 }
 
-.NBtn{
-    background-color: #dedede;
-    color:#777
+.NBtn {
+	background-color: #dedede;
+	color: #777
 }
 
-.YBtn{
-    background-color: lightsalmon;
-    color: #fff;
+.YBtn {
+	background-color: lightsalmon;
+	color: #fff;
 }
 
-.NBtn:hover{
-    background-color: #c3c1c1;
-    font-weight: bold;
+.NBtn:hover {
+	background-color: #c3c1c1;
+	font-weight: bold;
 }
 
-.YBtn:hover{
-    background-color: rgb(210, 106, 65);
-    font-weight: bold;
+.YBtn:hover {
+	background-color: rgb(210, 106, 65);
+	font-weight: bold;
+}
+
+.fieldError {
+	color: #bd2130;
 }

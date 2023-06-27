@@ -37,18 +37,21 @@ public class MemberController {
 		return "member/regChoice";
 	}
 	
+	//개인 회원 선택 시
 	@GetMapping("/newm")
 	public String memberTerms(Model model) {
 		model.addAttribute("memberFormDto", new MemberFormDto());
 		return "member/termsForm";
 	}
 	
+	//업체 회원 선택 시
 	@GetMapping("/newc")
 	public String corpTerms(Model model) {
 		model.addAttribute("memberFormDto", new MemberFormDto());
 		return "member/termsForm";
 	}
 	
+	//약관 동의 후
 	@GetMapping("/newm/join")
 	public String memberForm(Model model) {
 		model.addAttribute("memberFormDto", new MemberFormDto());
@@ -96,6 +99,7 @@ public class MemberController {
 		return "member/loginForm";
 	}
 	
+	//이메일 중복 검사
 	@GetMapping("/emailChk")
 	  public ResponseEntity<?> checkEmailDuplicate(@RequestParam("email") String email) {
 	    boolean isDuplicate = memberService.isEmailDuplicate(email);
@@ -104,6 +108,7 @@ public class MemberController {
 	    return ResponseEntity.ok(response);
 	  }
 	
+	//사업자 등록 번호 중복 검사
 	@GetMapping("/registnumChk")
 	public ResponseEntity<?> checkRegistnumDuplicate(@RequestParam("registnum") String registnum) {
 		boolean isDuplicate = memberService.isRegistnumDuplicate(registnum);
@@ -112,11 +117,13 @@ public class MemberController {
 		return ResponseEntity.ok(response);
 	}
 	
+	//로그인 클릭 시
 	@GetMapping("/login")
 	public String loginMember() {
 		return "/member/loginForm";
 	}
 	
+	//로그아웃 클릭 시
 	@GetMapping("/login/error")
 	public String loginError(Model model) {
 		model.addAttribute("loginErrorMsg", "아이디 또는 비밀번호를 확인하세요.");

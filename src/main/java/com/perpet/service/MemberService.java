@@ -39,10 +39,12 @@ public class MemberService implements UserDetailsService {
 				.roles(member.get().getRole().toString()).build();
 	}
 	
-			
+	//이메일 중복 검사
 	public boolean isEmailDuplicate(String email) {
         return memberRepository.existsByEmail(email);
     }
+	
+	//사업자 등록 번호 중복 검사
 	public boolean isRegistnumDuplicate(String registnum) {
 		return memberRepository.existsByRegistnum(registnum);
 	}

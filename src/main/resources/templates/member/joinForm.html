@@ -12,31 +12,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
 <body>
-    <!-- 사용자 CSS 추가 -->
-	<th:block layout:fragment="css">
-	
-	    <style>
-	        .fieldError {
-	            color: #bd2130;
-	        }
-	    </style>
-	</th:block>
-	
-	<!-- 사용자 스크립트 추가 -->
-	<th:block layout:fragment="script" >
-	
-		<!-- 타임리프를 활용한 script문 -->
-	    <script th:inline="javascript">
-		    $(document).ready(function(){
-		    	
-		        var errorMessage = /*[[${errorMessage}]]*/ "";
-		        if(errorMessage != null){
-		            alert(errorMessage);
-		        }
-		    });
-	    </script>
-	
-	</th:block>
         <div class="wrap" layout:fragment="content">
             <form  action="/members/newm" role="form" method="post" th:object="${memberFormDto}" id="joinForm" onsubmit="return validateForm()">
                 <div class="register">

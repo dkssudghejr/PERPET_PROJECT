@@ -124,10 +124,9 @@ function checkRegistnumDuplicate() {
 			}
 		});
 	}
-
-
-
-
-
-
 }
+
+$(document).ready(function() {
+
+	var errorMessage = /*[[${errorMessage}]]*/ "";
+});
