@@ -38,4 +38,13 @@ public class MemberService implements UserDetailsService {
 		return User.builder().username(member.get().getEmail()).password(member.get().getPw())
 				.roles(member.get().getRole().toString()).build();
 	}
+	
+			
+	public boolean isEmailDuplicate(String email) {
+        return memberRepository.existsByEmail(email);
+    }
+	public boolean isRegistnumDuplicate(String registnum) {
+		return memberRepository.existsByRegistnum(registnum);
+	}
+	
 }

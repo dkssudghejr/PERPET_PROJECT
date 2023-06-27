@@ -8,6 +8,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
     <link rel="stylesheet" href="/css/joinFormStyle.css">
+    <script src="/js/joinForm.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
 <body>
@@ -37,42 +38,53 @@
 	
 	</th:block>
     <div class="wrap" layout:fragment="content">
-            <form  action="/members/newc" role="form" method="post" th:object="${companyFormDto}" id="joinForm">
+            <form  action="/members/newc" role="form" method="post" th:object="${memberFormDto}" id="joinForm">
                 <div class="register">
                     <div class="title">회원가입</div>
-        
+        			<p class="error" id="error0" style="display:none">이메일을 입력해주세요.</p>
+        			<p class="error" id="error1" style="display:none">중복된 이메일입니다.</p>
+        			<p class="error" id="error2" style="display:none">사용가능한 이메일입니다.</p>
+        			<p class="error" id="error4" style="display:none">이메일 중복 확인을 해주세요.</p>
                     <p>
-                        <label for="">이메일</label> <input class="textBox" type="text" id="email" th:field="*{email}"
+                        <label for="email">이메일</label> <input class="textBox" type="email" id="email" th:field="*{email}"
                             name="email" onblur="checkId()" placeholder="5~12자리의 영소문자와 숫자, -, _ 조합">
-                        <button type="button" id="idOverlap" class="idOverlap" value="N" onclick="fn_idOverlap()">중복확인</button>
+                        <button type="button" id="idOverlap" class="idOverlap" value="N" onclick="checkEmailDuplicate()">중복확인</button>
                     </p>
                     <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="fieldError">Incorrect data</p>
                     <p>
-                        <label for="">비밀번호</label> <input class="textBox" type="text" id="pw" th:field="*{pw}"
-                            name="pw" onblur="checkPwd()" placeholder="8~12자리의 영대소문자와 숫자 조합">
+                        <label for="pw">비밀번호</label> <input class="textBox" type="password" id="pw" th:field="*{pw}"
+                            name="pw"  onblur="checkPwValidity()" placeholder="8~12자리의 영대소문자와 숫자 조합" on>
                     </p>  
                     <p th:if="${#fields.hasErrors('pw')}" th:errors="*{pw}" class="fieldError">Incorrect data</p>
+                    <p class="error" id="error5" style="display:none">비밀번호는 8~12자리의 영대소문자와 숫자 조합이어야 합니다.</p>
                     <p>
-                        <label for="">업체명</label> <input class="textBox" type="text" id="name" th:field="*{name}"
-                            name="name" onblur="checkName()" placeholder="김그린">
+                    	<label for="pw2">비밀번호 확인</label> <input class="textBox" type="password" id="pw2" onblur="checkPw()">
+                    </p>
+                    <p class="error" id="error3" style="display:none">비밀번호가 일치하지 않습니다.</p>
+                    <p>
+                        <label for="name">이름</label> <input class="textBox" type="text" id="name" th:field="*{name}"
+                            name="name" placeholder="김그린">
                     </p>
                     <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="fieldError">Incorrect data</p>
                     <p>
-                        <label for="">전화번호</label> <input class="textBox" type="text" id="tel" th:field="*{tel}"
-                            name="tel" onblur="checkTel()" placeholder="052-0000-0000">
+                        <label for="tel">전화번호</label> <input class="textBox" type="text" id="tel" th:field="*{tel}"
+                            name="tel" onblur="checkTel()" placeholder="010-0000-0000">
                     </p>
+                    <p class="error" id="error6" style="display:none">010-0000-0000 형식으로 입력해주세요.</p>
                     <p th:if="${#fields.hasErrors('tel')}" th:errors="*{tel}" class="fieldError">Incorrect data</p>
                     <p>
-                        <label for="">주소</label> <input class="textBox" type="text" id="addr" th:field="*{addr}"
+                        <label for="addr">주소</label> <input class="textBox" type="text" id="addr" th:field="*{addr}"
                             name="addr">
                     </p>
                     <p th:if="${#fields.hasErrors('addr')}" th:errors="*{addr}" class="fieldError">Incorrect data</p>
                     <p>
-                        <label for="">사업자 등록 번호</label> <input class="textBox" type="text" id="registnum" th:field="*{registnum}"
-                            name="registnum" placeholder="정확하게 입력해주세요.">
+                        <label for="registnum">사업자 등록 번호</label> <input class="textBox" type="text" id="registnum" th:field="*{registnum}"
+                            name="registnum" placeholder="정확하게 입력해주세요." onblur="checkRegistnumDuplicate()">
                     </p>
-					<p th:if="${#fields.hasErrors('registnum')}" th:errors="*{registnum}" class="fieldError">Incorrect data</p>
-					
+                    <p class="error" id="error7" style="display:none">이미 가입된 사업자 번호입니다.</p>
+                    <p class="error" id="error8" style="display:none">형식에 맞게 작성해주세요.</p>
+				
+					<p class="required">업체 회원은 가입 후 관리자의 승인이 이루어진 다음에 이용 가능합니다.<br> (2~3일 내 승인)</p>
                     <button class="registerBtn" type="submit">가입하기</button>
                     
                 </div><!--.register-->

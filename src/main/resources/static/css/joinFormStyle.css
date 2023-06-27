@@ -114,3 +114,14 @@ button {
 .registerBtn:hover{
     font-weight: 600;
 }
+
+.error{
+	color : rgb(255, 48, 48);
+	text-align : center;
+	font-size : 15px;
+}
+
+.required{
+	color: red;
+	text-align : center;
+}

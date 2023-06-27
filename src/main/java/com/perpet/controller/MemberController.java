@@ -1,7 +1,11 @@
 package com.perpet.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.validation.Valid;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,11 +15,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.perpet.dto.CompanyFormDto;
 import com.perpet.dto.MemberFormDto;
-import com.perpet.entity.Company;
 import com.perpet.entity.Member;
-import com.perpet.service.CompanyService;
 import com.perpet.service.MemberService;
 
 import lombok.RequiredArgsConstructor;
@@ -26,8 +27,6 @@ import lombok.RequiredArgsConstructor;
 public class MemberController {
 	
 	private final MemberService memberService;
-	
-	private final CompanyService companyService;
 	
 	private final PasswordEncoder passwordEncoder;
 	
@@ -46,7 +45,7 @@ public class MemberController {
 	
 	@GetMapping("/newc")
 	public String corpTerms(Model model) {
-		model.addAttribute("companyFormDto", new CompanyFormDto());
+		model.addAttribute("memberFormDto", new MemberFormDto());
 		return "member/termsForm";
 	}
 	
@@ -58,7 +57,7 @@ public class MemberController {
 	
 	@GetMapping("/newc/join")
 	public String corpForm(Model model) {
-		model.addAttribute("companyFormDto", new CompanyFormDto());
+		model.addAttribute("memberFormDto", new MemberFormDto());
 		return "member/corpJoinForm";
 	}
 	
@@ -81,20 +80,36 @@ public class MemberController {
 	}
 	
 	@PostMapping("/newc")
-	public String newCorp(@Valid CompanyFormDto companyFormDto, BindingResult bindingResult, Model model) {
+	public String newCorp(@Valid MemberFormDto memberFormDto, BindingResult bindingResult, Model model) {
 		if(bindingResult.hasErrors()) {
 			return "member/corpJoinForm";
 		}
 		
 		try {
-			Company company = Company.createCompany(companyFormDto, passwordEncoder);
-			companyService.saveCompany(company);
+			Member member = Member.createCompany(memberFormDto, passwordEncoder);
+			memberService.saveMember(member);
 		} catch(IllegalStateException e) {
 			model.addAttribute("errorMessage", e.getMessage());
-			return "member/corpJoinForm";
+			return "member/joinForm";
 		}
 		
 		return "member/loginForm";
+	}
+	
+	@GetMapping("/emailChk")
+	  public ResponseEntity<?> checkEmailDuplicate(@RequestParam("email") String email) {
+	    boolean isDuplicate = memberService.isEmailDuplicate(email);
+	    Map<String, Boolean> response = new HashMap<>();
+	    response.put("duplicate", isDuplicate);
+	    return ResponseEntity.ok(response);
+	  }
+	
+	@GetMapping("/registnumChk")
+	public ResponseEntity<?> checkRegistnumDuplicate(@RequestParam("registnum") String registnum) {
+		boolean isDuplicate = memberService.isRegistnumDuplicate(registnum);
+		Map<String, Boolean> response = new HashMap<>();
+		response.put("duplicate", isDuplicate);
+		return ResponseEntity.ok(response);
 	}
 	
 	@GetMapping("/login")

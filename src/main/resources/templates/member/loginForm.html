@@ -1,41 +1,46 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layouts/layout}">
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/layout}">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
-    
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+
 </head>
 <body layout:fragment="content">
-<!-- 사용자 CSS 추가 -->
-<th:block layout:fragment="css">
-<link rel="stylesheet" href="/css/loginFormStyle.css">
-  <style>
-        .error {
-            color: #bd2130;
-        }
-    </style>
-</th:block>
+	<!-- 사용자 CSS 추가 -->
+	<th:block layout:fragment="css">
+		<link rel="stylesheet" href="/css/loginFormStyle.css">
+		<style>
+.error {
+	color: #bd2130;
+}
+</style>
+	</th:block>
 
-    <form  role="form" method="post" action="/members/login" class="loginForm">
+	<form role="form" method="post" action="/members/login"
+		class="loginForm">
         <div class="loginLogo"><img src="/img/logo.png" alt=""></div>
         <h3 id="title">Login</h3>
         <p th:if="${loginErrorMsg}" class="error" th:text="${loginErrorMsg}"></p>
-		<!--${cookie.id.value} : 쿠키중에서 이름이 id인 쿠키의 value를 가져옴 -->
-        <input type="email" th:for="email" name="email" placeholder="이메일을 입력해주세요." autofocus class="id" id="email">
-        <input type="password" th:for="pw" name="pw" placeholder="비밀번호를 입력해주세요." class="pw" id="pw">
-        
-        <button>로그인</button>
-        <div>
+		<div class="form-group">
+			<input type="email" name="email" placeholder="이메일을 입력해주세요" class="id" >
+		</div>
+		<div class="form-group">
+			<input type="password" name="password" id="password" placeholder="비밀번호 입력" class="pw">
+		</div>
+		<button class="btn btn-primary">로그인</button>
+		<div>
             <label><input type="checkbox" name="rememberId" > 아이디 기억</label> |
             <a href="">비밀번호 찾기</a> |
             <a href="/members/new" >회원가입</a>
         </div>
-        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
-    </form>
-    <script src="./js/loginForm.js"></script>
+		<input type="hidden" th:name="${_csrf.parameterName}"
+			th:value="${_csrf.token}">
+	</form>
+	<script src="/js/loginForm.js"></script>
 </body>
 </html>
