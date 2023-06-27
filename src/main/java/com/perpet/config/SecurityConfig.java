@@ -20,29 +20,30 @@ public class SecurityConfig{
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
 		http.formLogin()
-			//로그인 설정
-			.loginPage("/members/login") //로그인 페이지 url 설정
-			.defaultSuccessUrl("/") //로그인 성공시 이동할 url 설정
-			.usernameParameter("memail") //로그인시 사용할 파라미터 이름
-			.failureUrl("/members/login/error") //로그인 실패시 이동할 url 설정
-			
-			.and()
-			
-			//로그아웃 설정
-			.logout() //로그아웃 처리
-			.logoutRequestMatcher(new AntPathRequestMatcher("/members/logout")) //로그아웃에 대한 url 설정
-			.logoutSuccessUrl("/"); //로그아웃 성공시 이동할 url 설정
-			
-			//스프링 시큐리티에 httpServleteRequest를 이용하겠다는 의미
-			http.authorizeRequests()
-			//모든 사용자가 인증 없이 해당 경로에 접근할 수 있도록 설정
-			.mvcMatchers("/css/**", "/js/**", "/img/**").permitAll()
-			.mvcMatchers("/", "/members/**", "/product/**", "/images/**").permitAll()
-			//admin으로 시작하는 경로는 해당 계정이 관리자일때만 접근 가능하도록 설정
-			.mvcMatchers("/admin/**").hasRole("ADMIN")
-			.mvcMatchers("/company/**").hasRole("COMPANY")
-			//나머지는 모두다 인증을 요구
-			.anyRequest().authenticated();
+		//로그인 설정
+		.loginPage("/members/login") //로그인 페이지 url 설정
+		.defaultSuccessUrl("/") //로그인 성공시 이동할 url 설정
+		.usernameParameter("email") //로그인시 사용할 파라미터 이름
+		.failureUrl("/members/login/error") //로그인 실패시 이동할 url 설정
+		
+		.and()
+		
+		//로그아웃 설정
+		.logout() //로그아웃 처리
+		.logoutRequestMatcher(new AntPathRequestMatcher("/members/logout")) //로그아웃에 대한 url 설정
+		.logoutSuccessUrl("/"); //로그아웃 성공시 이동할 url 설정
+		
+		//스프링 시큐리티에 httpServleteRequest를 이용하겠다는 의미
+		http.authorizeRequests()
+		//모든 사용자가 인증 없이 해당 경로에 접근할 수 있도록 설정
+		.mvcMatchers("/css/**", "/js/**", "/img/**").permitAll()
+		.mvcMatchers("/", "/members/**", "/product/**", "/images/**", "/extras/**").permitAll()
+		//admin으로 시작하는 경로는 해당 계정이 관리자일때만 접근 가능하도록 설정
+		.mvcMatchers("/admin/**").hasRole("ADMIN")
+		.mvcMatchers("/company/**").hasRole("COMPANY")
+		//나머지는 모두다 인증을 요구
+		.anyRequest().authenticated();
+		
 			
 			//인증되지 않은 사용자가 리소스에 접근할 때 수행되는 핸들러 목록
 			http.exceptionHandling()

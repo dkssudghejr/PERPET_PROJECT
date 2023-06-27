@@ -30,25 +30,34 @@ public class Member {
 	
 	@Id
 	@Column(name="m_email")
-	private String memail;
+	private String email;
 	
-	private String m_pw;
+	@Column(name="m_pw")
+	private String pw;
 	
-	private String m_name;
+	@Column(name="m_name")
+	private String name;
 	
-	@Column(unique = true)
-	private String m_tel;
+	@Column(unique = true, name = "m_tel")
+	private String tel;
 	
-	private String m_addr;
+	@Column(name="m_addr")
+	private String addr;
 	
+	
+	@Column(name="m_rdate")
 	@ColumnDefault("SYSDATE")
-	private LocalDateTime m_rdate;
+	private LocalDateTime rdate;
 	
+	
+	@Column(name="m_terms")
 	@ColumnDefault("'Y'")
-	private String m_terms;
+	private String terms;
 	
+	
+	@Column(name="m_drop")
 	@ColumnDefault("'N'")
-	private String m_drop;
+	private String drop;
 	
 	@Enumerated(EnumType.STRING)
 	private Role role;
@@ -56,12 +65,12 @@ public class Member {
 	//Member엔티티 생성
 	public static Member createMember(MemberFormDto memberFormDto, PasswordEncoder passwordEncoder) {
 		Member member = new Member();
-		member.setMemail(memberFormDto.getMemail());
-		String password = passwordEncoder.encode(memberFormDto.getM_pw());
-		member.setM_pw(password);
-		member.setM_name(memberFormDto.getM_name());
-		member.setM_tel(memberFormDto.getM_tel());
-		member.setM_addr(memberFormDto.getM_addr());
+		member.setEmail(memberFormDto.getEmail());
+		String password = passwordEncoder.encode(memberFormDto.getPw());
+		member.setPw(password);
+		member.setName(memberFormDto.getName());
+		member.setTel(memberFormDto.getTel());
+		member.setAddr(memberFormDto.getAddr());
 		/*
 		 * member.setM_rdate(memberFormDto.getM_rdate());
 		 * member.setM_terms(memberFormDto.getM_terms());

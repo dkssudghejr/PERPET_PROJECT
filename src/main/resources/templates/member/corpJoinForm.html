@@ -42,36 +42,36 @@
                     <div class="title">회원가입</div>
         
                     <p>
-                        <label for="">이메일</label> <input class="textBox" type="text" id="cpemail" th:field="*{cpemail}"
-                            name="cpemail" onblur="checkId()" placeholder="5~12자리의 영소문자와 숫자, -, _ 조합">
+                        <label for="">이메일</label> <input class="textBox" type="text" id="email" th:field="*{email}"
+                            name="email" onblur="checkId()" placeholder="5~12자리의 영소문자와 숫자, -, _ 조합">
                         <button type="button" id="idOverlap" class="idOverlap" value="N" onclick="fn_idOverlap()">중복확인</button>
                     </p>
-                    <p th:if="${#fields.hasErrors('cpemail')}" th:errors="*{cpemail}" class="fieldError">Incorrect data</p>
+                    <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="fieldError">Incorrect data</p>
                     <p>
-                        <label for="">비밀번호</label> <input class="textBox" type="text" id="cp_pw" th:field="*{cp_pw}"
-                            name="cp_pw" onblur="checkPwd()" placeholder="8~12자리의 영대소문자와 숫자 조합">
+                        <label for="">비밀번호</label> <input class="textBox" type="text" id="pw" th:field="*{pw}"
+                            name="pw" onblur="checkPwd()" placeholder="8~12자리의 영대소문자와 숫자 조합">
                     </p>  
-                    <p th:if="${#fields.hasErrors('cp_pw')}" th:errors="*{cp_pw}" class="fieldError">Incorrect data</p>
+                    <p th:if="${#fields.hasErrors('pw')}" th:errors="*{pw}" class="fieldError">Incorrect data</p>
                     <p>
-                        <label for="">업체명</label> <input class="textBox" type="text" id="cp_name" th:field="*{cp_name}"
-                            name="cp_name" onblur="checkName()" placeholder="김그린">
+                        <label for="">업체명</label> <input class="textBox" type="text" id="name" th:field="*{name}"
+                            name="name" onblur="checkName()" placeholder="김그린">
                     </p>
-                    <p th:if="${#fields.hasErrors('cp_name')}" th:errors="*{cp_name}" class="fieldError">Incorrect data</p>
+                    <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="fieldError">Incorrect data</p>
                     <p>
-                        <label for="">전화번호</label> <input class="textBox" type="text" id="cp_tel" th:field="*{cp_tel}"
-                            name="cp_tel" onblur="checkTel()" placeholder="052-0000-0000">
+                        <label for="">전화번호</label> <input class="textBox" type="text" id="tel" th:field="*{tel}"
+                            name="tel" onblur="checkTel()" placeholder="052-0000-0000">
                     </p>
-                    <p th:if="${#fields.hasErrors('cp_tel')}" th:errors="*{cp_tel}" class="fieldError">Incorrect data</p>
+                    <p th:if="${#fields.hasErrors('tel')}" th:errors="*{tel}" class="fieldError">Incorrect data</p>
                     <p>
-                        <label for="">주소</label> <input class="textBox" type="text" id="cp_addr" th:field="*{cp_addr}"
-                            name="cp_addr">
+                        <label for="">주소</label> <input class="textBox" type="text" id="addr" th:field="*{addr}"
+                            name="addr">
                     </p>
-                    <p th:if="${#fields.hasErrors('cp_addr')}" th:errors="*{cp_addr}" class="fieldError">Incorrect data</p>
+                    <p th:if="${#fields.hasErrors('addr')}" th:errors="*{addr}" class="fieldError">Incorrect data</p>
                     <p>
-                        <label for="">사업자 등록 번호</label> <input class="textBox" type="text" id="cp_registnum" th:field="*{cp_registnum}"
-                            name="cp_registnum" placeholder="정확하게 입력해주세요.">
+                        <label for="">사업자 등록 번호</label> <input class="textBox" type="text" id="registnum" th:field="*{registnum}"
+                            name="registnum" placeholder="정확하게 입력해주세요.">
                     </p>
-					<p th:if="${#fields.hasErrors('cp_registnum')}" th:errors="*{cp_registnum}" class="fieldError">Incorrect data</p>
+					<p th:if="${#fields.hasErrors('registnum')}" th:errors="*{registnum}" class="fieldError">Incorrect data</p>
 					
                     <button class="registerBtn" type="submit">가입하기</button>
                     

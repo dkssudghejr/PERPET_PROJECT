@@ -14,21 +14,21 @@ import lombok.ToString;
 public class CompanyFormDto {
 	
 	@NotBlank(message = "이메일를 입력해주세요.")
-	private String cpemail;
+	private String email;
 	
 	@NotEmpty(message = "패스워드를 입력해주세요.")
 	@Length(min=8, max=15, message="비밀번호는 8~15글자로 입력하세요.")
-	private String cp_pw;
+	private String pw;
 	
 	@NotEmpty(message = "업체명을 입력해주세요.")
-	private String cp_name;
+	private String name;
 	
 	@NotEmpty(message = "전화번호를 입력해주세요.")
-	private String cp_tel;
+	private String tel;
 	
 	@NotEmpty(message = "주소를 입력해주세요.")
-	private String cp_addr;
+	private String addr;
 	
 	@NotEmpty(message = "사업자 등록 번호는 필수입니다.")
-	private String cp_registnum;
+	private String registnum;
 }
