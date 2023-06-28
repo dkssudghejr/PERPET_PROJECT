@@ -1,79 +1,79 @@
 @charset "UTF-8";
 
 @font-face {
-    font-family: 'NanumSquareNeo-Variable';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
+	font-family: 'NanumSquareNeo-Variable';
+	src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
 }
 
-*{
-    margin: 0;
-    padding: 0;
-    list-style: none;
+* {
+	margin: 0;
+	padding: 0;
+	list-style: none;
 }
 
-a{
-    color: #333;
-    text-decoration: none;
+a {
+	color: #333;
+	text-decoration: none;
 }
 
-body{
-    font-family: 'NanumSquareNeo-Variable',serif;
-    font-size: 18px;
-    line-height: 23px;
-    color: #333;
+body {
+	font-family: 'NanumSquareNeo-Variable', serif;
+	font-size: 18px;
+	line-height: 23px;
+	color: #333;
 }
 
-img{
-    vertical-align: top;
+img {
+	vertical-align: top;
 }
 
-input{
-    outline: none;
+input {
+	outline: none;
 }
 
-.wrap{
-    width: 100%;
-    min-width: 1280px;
+.wrap {
+	width: 100%;
+	min-width: 1280px;
 }
 
-.container{
-    width: 1240px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 50px;
+.container {
+	width: 1240px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 50px;
 }
 
-.container h2{
-    text-align: center;
-    margin: 20px 0 30px;
+.container h2 {
+	text-align: center;
+	margin: 20px 0 30px;
 }
 
 .bestList {
-    display: flex;
-    justify-content: space-around;
-    font-size: 14px;
-    flex-wrap: wrap-reverse;
+	display: flex;
+	justify-content: space-around;
+	font-size: 14px;
+	flex-wrap: wrap-reverse;
 }
 
-.bestList img{
-    border-radius: 30px;
-    margin-bottom: 15px;
+.bestList img {
+	border-radius: 30px;
+	margin-bottom: 15px;
 }
 
-.bestList .price{
-    font-size: 17px;
-    font-weight: bold;
+.bestList .price {
+	font-size: 17px;
+	font-weight: bold;
 }
 
-.bestList .sellInfo{
-    display: flex;
-    font-size: 11px;
-    color: #aaa;
+.bestList .sellInfo {
+	display: flex;
+	font-size: 11px;
+	color: #aaa;
 }
 
-.bestList .madeBy{
-    font-size: 13px;
-    margin-bottom: 30px;
+.bestList .madeBy {
+	font-size: 13px;
+	margin-bottom: 30px;
 }

@@ -1,5 +1,5 @@
 package com.perpet.contstant;
 
 public enum ProductSellStatus {
-	SELL, SOLD_OUT, NON_SELL
+	SELL, NON_SELL, SOLD_OUT
 }
