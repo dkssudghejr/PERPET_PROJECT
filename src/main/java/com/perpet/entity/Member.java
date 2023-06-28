@@ -96,7 +96,7 @@ public class Member {
 		member.setAddr(memberFormDto.getAddr());
 		member.setRegistnum(memberFormDto.getRegistnum());
 		
-		member.setRole(Role.COMPANY);		
+		member.setRole(Role.USER);		
 		member.setApproval("N");
 		return member;
 	}

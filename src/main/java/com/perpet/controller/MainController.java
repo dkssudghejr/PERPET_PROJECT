@@ -9,17 +9,5 @@ public class MainController {
 	@GetMapping("/")
 	public String main() {
 		return "index";
-	}
-	
-	@GetMapping("/company")
-	public String company() {
-		return "corpMain";
-	}
-	
-	@GetMapping("/admin")
-	public String admin() {
-		return "adminMain";
-	}
-	
-	
+	}	
 }
