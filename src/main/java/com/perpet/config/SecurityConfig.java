@@ -39,7 +39,7 @@ public class SecurityConfig{
 		.mvcMatchers("/css/**", "/js/**", "/img/**").permitAll()
 		.mvcMatchers("/", "/members/**", "/product/**", "/images/**", "/extras/**").permitAll()
 		//admin으로 시작하는 경로는 해당 계정이 관리자일때만 접근 가능하도록 설정
-		.mvcMatchers("/admin/**").hasRole("ADMIN")
+		.mvcMatchers("/admin/**", "/approve/**").hasRole("ADMIN")
 		.mvcMatchers("/company/**").hasRole("COMPANY")
 		//나머지는 모두다 인증을 요구
 		.anyRequest().authenticated();

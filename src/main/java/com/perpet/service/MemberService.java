@@ -1,5 +1,6 @@
 package com.perpet.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.security.core.userdetails.User;
@@ -47,6 +48,11 @@ public class MemberService implements UserDetailsService {
 	//사업자 등록 번호 중복 검사
 	public boolean isRegistnumDuplicate(String registnum) {
 		return memberRepository.existsByRegistnum(registnum);
+	}
+	
+	//승인되지 않은 업체 목록
+	public List<Member> approvalNCompany(String approval){
+		return memberRepository.findByApproval(approval);
 	}
 	
 }
