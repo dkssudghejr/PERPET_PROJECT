@@ -36,11 +36,11 @@ public class Product {
 	@Column(name =  "p_name", nullable = false)
 	private String name;
 	
-	@Column(name =  "p_made", nullable = false)
-	private String made;
-	
 	@Column(name =  "p_price", nullable = false)
 	private int price;
+	
+	@Column(name =  "p_made", nullable = false)
+	private String made;
 	
 	@Column(name =  "p_stockNumber")
 	private int stockNumber;
