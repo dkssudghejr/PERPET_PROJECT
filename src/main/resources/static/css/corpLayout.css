@@ -38,15 +38,15 @@ input {
 	min-width: 1280px;
 }
 
+
 .header {
-	background-color: rgb(163, 202, 163);
 	width: 100%;
-	margin-bottom: 50px;
+	background-color: rgb(163, 202, 163);
 }
 
 .headerIn {
 	width: 1240px;
-	height: 190px;
+	height: 210px;
 	margin-left: auto;
 	margin-right: auto;
 	position: relative;
@@ -66,7 +66,7 @@ input {
 }
 
 .nav .navList {
-	width: 700px;
+	width: 600px;
 	display: flex;
 	justify-content: space-between;
 	margin-top: 135px;
@@ -79,12 +79,16 @@ input {
 
 .member .memberList {
 	display: flex;
-	width: 200px;
+	width: 230px;
 	font-size: 13px;
-	justify-content: space-around;
+	justify-content: right;
 	position: absolute;
 	top: 20px;
 	right: 20px;
+}
+
+.memberList li {
+	margin-right: 30px;
 }
 
 .memberList li :hover {
@@ -110,108 +114,6 @@ input {
 	background-color: #f9f9f9;
 }
 
-.container {
-	width: 1240px;
-	margin-left: auto;
-	margin-right: auto;
-	margin-bottom: 50px;
-}
-
-.container h2 {
-	text-align: center;
-	margin-bottom: 30px;
-}
-
-.unconfirmedCorp, .unconfirmedProd {
-	margin-bottom: 100px;
-}
-
-.unCorpBox {
-	border: 3px solid #777;
-	border-radius: 30px;
-	width: 900px;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.unCorpList {
-	width: 870px;
-	margin: 30px;
-	line-height: 35px;
-	text-align: center;
-}
-
-.lastTh {
-	margin-right: 30px;
-}
-
-.unCorpList button {
-	background: none;
-	border-radius: 10px;
-	padding: 3px;
-	margin-top: -10px;
-	font-weight: bold;
-}
-
-.unCorpList button:hover {
-	background-color: rgb(226, 142, 29);
-	color: whitesmoke;
-}
-
-.corpN {
-	margin: 0 0 0 10px;
-}
-
-.unProdList {
-	display: flex;
-	justify-content: space-around;
-	font-size: 14px;
-	flex-wrap: wrap-reverse;
-}
-
-.unProdList img {
-	margin-bottom: 15px;
-}
-
-.unProdList .price {
-	font-size: 17px;
-	font-weight: bold;
-}
-
-.unProdList .sellInfo {
-	display: flex;
-	font-size: 11px;
-	color: #aaa;
-}
-
-.unProdList .madeBy {
-	font-size: 13px;
-	margin-bottom: 30px;
-}
-
-.unQNABox {
-	border: 3px solid #777;
-	border-radius: 30px;
-	width: 600px;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.unQNAList {
-	margin: 30px;
-	line-height: 30px;
-}
-
-.unQNABox li {
-	border-bottom: 1px solid #b5b3b3;
-	margin: 10px;
-	text-align: center;
-}
-
-.footer {
-	margin-bottom: 50px;
-}
-
 .footerTop {
 	text-align: center;
 	font-size: 16px;
@@ -225,6 +127,11 @@ input {
 	color: rgb(253, 134, 49);
 }
 
+.footerTop a:hover {
+	border-bottom: 1px solid;
+	padding-bottom: 1px;
+}
+
 .footerBottom {
 	width: 1240px;
 	margin-left: auto;
@@ -234,12 +141,17 @@ input {
 	color: #aaa;
 	display: flex;
 	position: relative;
+	margin-bottom: 100px;
 }
 
 .footerLogo img {
 	width: 300px;
 	margin-left: -30px;
 	margin-bottom: 30px;
+}
+
+.leftFooter a:hover {
+	font-weight: bold;
 }
 
 .rightFooter {

@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{layouts/adminLayout}">
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,44 +15,7 @@
 </head>
 <body>
 	<div class="wrap">
-		<div class="header">
-			<div class="headerIn">
-				<div class="topLogo">
-					<p>
-						<a href=""><img src="./img/topLogo2.png" alt=""></a>
-					</p>
-				</div>
-				<div class="logo">
-					<p>
-						<a href=""><img src="./img/logo.png" alt=""></a>
-					</p>
-				</div>
-				<div class="nav">
-					<ul class="navList">
-						<li><a href="">업체/회사</a></li>
-						<li><a href="">대기 중 상품</a></li>
-						<li><a href="">전체 상품 보기</a></li>
-						<li><a href="">공지&문의</a></li>
-						<li><a href="/">메인홈페이지</a></li>
-					</ul>
-				</div>
-				<!--.nav-->
-				<div class="member">
-					<ul class="memberList">
-						<li><a href="/members/logout">로그아웃</a></li>
-						<li><a href="">관리자정보</a></li>
-					</ul>
-				</div>
-				<!--.memeber-->
-				<div class="searchBar">
-					<img src="./img/search.png" alt=""> <input type="text"
-						name="search" placeholder="제품, 증상을 검색해보세요.">
-				</div>
-			</div>
-			<!--.headerIn-->
-		</div>
-		<!--.header-->
-		<div class="container">
+		<div class="container"  layout:fragment="content">
 			<div class="unconfirmedProd">
 				<h2>승인 대기 중 상품</h2>
 				<div class="unProdBox">

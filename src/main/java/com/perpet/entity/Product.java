@@ -52,10 +52,6 @@ public class Product {
 	@Column(name =  "p_ingredient", nullable = false)
 	private String ingredient;
 	
-	@Column(name =  "p_rdate")
-	@ColumnDefault("SYSDATE")
-	private LocalDateTime rdate;
-	
 	//온라인 구매 가능 여부
 	@Column(name =  "p_onlineBuy", nullable = false)
 	private String onlineBuy;
@@ -69,5 +65,14 @@ public class Product {
 	private String approval;
 	
 	@Enumerated(EnumType.STRING)
-	private ProductSellStatus productSellStatus; 
+	private ProductSellStatus productSellStatus; 	
+	
+	@Column(name =  "p_regdate")
+	@ColumnDefault("SYSDATE")
+	private LocalDateTime regDate;
+	
+	@Column(name = "p_update")
+	@ColumnDefault("SYSDATE")
+	private LocalDateTime update;
+	
 }
