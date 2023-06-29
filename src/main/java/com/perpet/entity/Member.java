@@ -1,13 +1,6 @@
 package com.perpet.entity;
 
-import java.time.LocalDateTime;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.DynamicInsert;
@@ -22,14 +15,13 @@ import lombok.ToString;
 
 @Entity
 @Table(name = "member")
-@Getter
-@Setter
+@Getter @Setter
 @ToString
 @DynamicInsert
-public class Member {
+public class Member extends BaseEntity{
 
 	@Id
-	@Column(name = "m_email")
+	@Column(name = "member_email")
 	private String email;
 
 	@Column(name = "m_pw")
@@ -47,10 +39,6 @@ public class Member {
 	// 사업자 등록번호
 	@Column(name = "m_registnum")
 	private String registnum;
-
-	@Column(name = "m_rdate")
-	@ColumnDefault("SYSDATE")
-	private LocalDateTime rdate;
 
 	//약관 동의 여부
 	@Column(name = "m_terms")

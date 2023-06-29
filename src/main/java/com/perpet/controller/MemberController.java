@@ -130,10 +130,4 @@ public class MemberController {
 		return "/member/loginForm";
 	}
 	
-	/*
-	 * @PostMapping("/members/login") public String login(@RequestParam("m_email")
-	 * String email, @RequestParam("m_pw") String password) {
-	 * 
-	 * }
-	 */
 }
