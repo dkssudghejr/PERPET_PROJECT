@@ -49,6 +49,8 @@ public class ProductFormDto {
 	private List<ProductImgDto> productImgDtoList = new ArrayList<>();
 	
 	//상품의 이미지 아이디를 저장
+	private List<Long> productImgIds = new ArrayList<>();
+	
 	private static ModelMapper modelMapper = new ModelMapper();
 	
 	public Product createProduct() {
