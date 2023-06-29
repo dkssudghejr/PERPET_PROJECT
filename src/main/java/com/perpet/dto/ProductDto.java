@@ -18,9 +18,9 @@ public class ProductDto {
 	
 	private String name; //상품명
 	
-	private String made; //제조사
-	
 	private int price; //가격
+	
+	private String made; //제조사
 	
 	private int stockNumber; //재고수량
 	
