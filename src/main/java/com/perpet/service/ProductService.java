@@ -2,7 +2,6 @@ package com.perpet.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import javax.persistence.EntityNotFoundException;
 
@@ -23,6 +22,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Transactional
 public class ProductService {
+	
 	private final ProductRepository productRepository;
 	private final ProductImgService productImgService;
 	private final ProductImgRepository productImgRepository;
@@ -46,7 +46,7 @@ public class ProductService {
 			}
 			
 			//이미지 정보 저장
-			productImgService.saveProductImg(productImt, productImgFileList.get(i));
+			productImgService.saveProductImg(productImg, productImgFileList.get(i));
 		}
 		
 		return product.getId();
@@ -76,5 +76,13 @@ public class ProductService {
 		Product product = productRepository.findById(productFormDto.getId()).orElseThrow(EntityNotFoundException::new);
 		
 		product.updateProduct(productFormDto);
+		
+		List<Long> productImgIds = productFormDto.getProductImgIds();
+		
+		for(int i=0; i<productImgFileList.size(); i++) {
+			productImgService.updateProductImg(productImgIds.get(i), productImgFileList.get(i));
+		}
+		
+		return product.getId();
 	}
 }
