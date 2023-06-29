@@ -1,0 +1,132 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'NanumSquareNeo-Variable';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing:border-box;
+}
+
+a{
+    color: #333;
+    text-decoration: none;
+}
+
+body{
+    font-family: 'NanumSquareNeo-Variable',serif;
+    font-size: 16px;
+    line-height: 23px;
+    color: #333;
+}
+
+img{
+    vertical-align: top;
+}
+
+input{
+    outline: none;
+}
+
+.productForm{
+    width: 700px;
+    margin: 100px auto 150px;
+    line-height: 30px;
+}
+
+h2{
+    margin-bottom: 10px;
+}
+
+.productForm li{
+    border-bottom: 1px solid #777;
+    padding: 10px 0;
+    display: flex;
+}
+
+.productForm li:last-child{
+    border-bottom: none;
+    justify-content: end;
+}
+
+.productForm li input{
+    width: 250px;
+    height: 30px;
+    padding: 0 10px;
+}
+
+.productForm li select{
+    height: 25px;
+}
+
+.productForm li textarea{
+    padding: 10px;
+}
+
+.listN{
+    width: 170px;
+}
+
+.filebox{
+    display: flex;
+}
+
+.filebox .upload-name {
+    display: inline-block;
+    height: 40px;
+    padding: 0 10px;
+    vertical-align: middle;
+    border: 1px solid #dddddd;
+    width: 78%;
+    color: #999999;
+}
+
+.filebox label {
+    font-size: 13px;
+    color: #fff;
+    background-color: #999999;
+    cursor: pointer;
+    width: 70px;
+    height: 40px;
+    margin-left: 10px;
+    text-align: center;
+    line-height: 40px;
+}
+
+.filebox input[type="file"] {
+    position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+}
+
+.required{
+    font-size: 14px;
+    text-align: end;
+    font-weight: 700;
+    color: red;
+    line-height: 40px;
+}
+
+.regBtn{
+    background-color: rgb(122, 161, 122);
+    border: none;
+    color: white;
+    border-radius: 5px;
+    width: 100px;
+    height: 40px;
+    font-size: 18px;
+    margin-left: 20px;
+}
+
+.regBtn:hover{
+    font-weight: 700;
+}

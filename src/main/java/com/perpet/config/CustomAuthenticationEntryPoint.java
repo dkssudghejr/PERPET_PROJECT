@@ -9,11 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
 
-//AuthenticationEntryPoint : 인증되지 않은 요청이 보호받고 있는 리소스에 
-//							접근하고자 할 때 호출되는 지점 (인증진입점)
 public class CustomAuthenticationEntryPoint implements AuthenticationEntryPoint{
 	
-	//commence : 인증이 필요한 리소스에 접근할 때 호출되며 인증 예외가 발생한 경우에 실행함s
 	@Override
 	public void commence(HttpServletRequest request, HttpServletResponse response,
 			AuthenticationException authException) throws IOException, ServletException {
