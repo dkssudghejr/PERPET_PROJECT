@@ -20,7 +20,7 @@ public class ProductDto {
 	
 	private int price; //가격
 	
-	private String made; //제조사
+	private String madeBy; //제조사
 	
 	private int stockNumber; //재고수량
 	

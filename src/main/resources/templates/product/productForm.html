@@ -12,12 +12,14 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
 <div layout:fragment="content">
-	<form action="" class="productForm">
+	<form class="productForm" role="form" method="post" enctype="multipart/form-data" th:object="productFormDto">
         <ul>
             <li>
                 <h2>상품 등록</h2>
             </li>
+            
             <li>
+            	<input type="hidden" th:field="*{id}">
                 <p class="listN">상품 카테고리</p>
                     <select name="cate" id="cate">
                         <option value="0">내/외부 구충제</option>
@@ -42,34 +44,35 @@
             </li>
             <li>
                 <p class="listN">상품명</p>
-                <input type="text" name="name" id="name" placeholder="상품명을 입력해주세요.">
+                <input type="text" th:filed="*{name}" placeholder="상품명을 입력해주세요.">
+                <p th:if="${fields.hassErrors('name')}" th:errors="*{name}" class="fieldError">Incorrect data</p>
             </li>
             <li>
                 <p class="listN">가격</p>
-                <input type="text" name="price" placeholder="가격을 입력해주세요.">
+                <input type="number" th:filed="*{price}" placeholder="가격을 입력해주세요.">
             </li>
             <li>
                 <p class="listN">제조사/업체명</p>
-                <input type="text" name="madeBy" placeholder="제조사/업체명을 입력해주세요.">
+                <input type="text" th:filed="*{madeBy}" placeholder="제조사/업체명을 입력해주세요.">
             </li>
             <li>
                 <p class="listN">재고 수량</p>
-                <input type="text" name="stockNumber" placeholder="온라인 판매 상품이 아닐 시 입력X">
+                <input type="text" th:filed="*{stockNumber}" placeholder="온라인 판매 상품이 아닐 시 입력X">
             </li>
             <li>
                 <p class="listN">대표 성분</p>
-                <textarea name="ingredient" id="ingredient" cols="50" rows="5"></textarea>
+                <textarea name="ingredient" th:filed="*{ingredient}" cols="50" rows="5"></textarea>
             </li>
             <li>
                 <p class="listN">상세 설명</p>
-                <textarea name="detail" id="detail" cols="70" rows="10" placeholder="제품 설명 / 복용 방법 등"></textarea>
+                <textarea th:filed="*{detail}" cols="70" rows="10" placeholder="제품 설명 / 복용 방법 등"></textarea>
             </li>
-            <li>
-                <p class="listN">대표 이미지</p>
-                <div class="filebox">
-                    <input class="upload-name" value="첨부파일" placeholder="첨부파일">
-                    <label for="file">파일찾기</label> 
-                    <input type="file" id="file">
+            <li th:if="${#lists.isEmpty(productFormDto.productImgDtoList)">
+                <p class="listN">상품 이미지</p>
+                <div class="filebox" th:each="num: ${#numbers.sequence(1,5)}">
+                    <input class="upload-name" value="첨부파일" placeholder="첨부파일" >
+                    <label for="file" th:text="상품이미지 + ${num}">파일찾기</label> 
+                    <input type="file" id="file" name="productImgFile">
                 </div>
             </li>
             <li>

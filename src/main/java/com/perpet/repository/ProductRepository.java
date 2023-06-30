@@ -18,6 +18,6 @@ public interface ProductRepository extends JpaRepository<Product, Long>, Queryds
 	List<Product> findByNameOrDetail(String name, String detail);
 	
 	//제조사로 상품을 조회
-	@Query("SELECT p FROM Product p WHERE p.made like %:made% ORDER BY p.price DESC")
-	List<Product> findByMade(@Param("made")String made);
+	@Query("SELECT p FROM Product p WHERE p.madeBy like %:madeBy% ORDER BY p.price DESC")
+	List<Product> findByMade(@Param("madeBy")String madeBy);
 }
