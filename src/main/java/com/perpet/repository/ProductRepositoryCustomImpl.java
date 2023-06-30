@@ -4,12 +4,14 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.thymeleaf.util.StringUtils;
 
 import com.perpet.contstant.ProductSellStatus;
+import com.perpet.dto.ProductSearchDto;
 import com.perpet.entity.Product;
 import com.perpet.entity.QProduct;
 import com.querydsl.core.types.dsl.BooleanExpression;
@@ -51,7 +53,7 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom{
 		return QProduct.product.regTime.after(dateTime);
 	}
 	
-	private BooleanExpression searchByList(String searchBy, String searchQuery) {
+	private BooleanExpression searchByLike(String searchBy, String searchQuery) {
 		if(StringUtils.equals("productName", searchBy)) {
 			return QProduct.product.name.like("%" + searchQuery + "%");
 		} else if (StringUtils.equals("createBy", searchQuery)) {
@@ -69,7 +71,7 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom{
 							searchSellStatusEq(productSearchDto.getSearchSellStatus()),
 							searchByLike(productSearchDto.getSearchBy(), productSearchDto.getSearchQuery()))
 					.orderBy(QProduct.product.id.desc())
-					.offset(pageable.getOffset()).limit(pageable.getPagesize()).fetch();
+					.offset(pageable.getOffset()).limit(pageable.getPageSize()).fetch();
 		
 		//전체 항목수 조회
 		long total = queryFactory.select(Wildcard.count).from(QProduct.product)
