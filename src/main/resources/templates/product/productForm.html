@@ -12,99 +12,99 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
 <div layout:fragment="content">
-	<form class="productForm" role="form" method="post" enctype="multipart/form-data" th:object="productFormDto">
+	<form role="form" method="post" enctype="multipart/form-data" class="productForm" th:object="${productFormDto}">
         <ul>
             <li>
                 <h2>상품 등록</h2>
-            </li>
-            
-            <li>
-            	<input type="hidden" th:field="*{id}">
-                <p class="listN">상품 카테고리</p>
-                    <select name="cate" id="cate">
-                        <option value="0">내/외부 구충제</option>
-                        <option value="10">기관지</option>
-                        <option value="20">알러지/피부</option>
-                        <option value="30">심장</option>
-                        <option value="40">안구</option>
-                        <option value="50">구강</option>
-                        <option value="60">귀</option>
-                        <option value="70">해열/진통</option>
-                        <option value="80">위장약</option>
-                        <option value="90">소독약</option>
-                        <option value="100">보조제</option>
-                    </select>
+                <input type="hidden" th:field="*{id}">
             </li>
             <li>
+            	<p class="listN">판매 상태</p>
+            	<select th:field="*{productSellStatus}" >
+            		<option value="SELL">판매중</option>
+            		<option value="SOLD_OUT">품절</option>
+            		<option value="NON_SELL">온라인 구매 불가</option>            		
+            	</select>
+            </li>
+			<li>
                 <p class="listN">온라인 구매 가능 여부</p>
-                    <select name="onlineBuy" id="onlineBuy">
-                        <option value="Y">가능</option>
-                        <option value="N">불가능</option>
-                    </select>
+                <select onchange="onlineBuyChange(this.value)" th:filed="*{onlineBuy}">
+                    <option >선택 필수</option>
+                    <option value="Y">가능</option>
+                    <option value="N">불가능</option>
+                </select>
+                <input type="hidden" name="onlineBuy" id="onlineBuy" >
             </li>
+            <li>
+				<p class="listN">상품 카테고리</p> 
+				<select onchange="cateChange(this.value)" th:filed="*{cate}" >
+					<option >선택하세요.</option>
+					<option value="0">내/외부 구충제</option>
+					<option value="10">기관지</option>
+					<option value="20">알러지/피부</option>
+					<option value="30">심장</option>
+					<option value="40">안구</option>
+					<option value="50">구강</option>
+					<option value="60">귀</option>
+					<option value="70">해열/진통</option>
+					<option value="80">위장약</option>
+					<option value="90">소독약</option>
+					<option value="100">보조제</option>
+				</select> 
+				<input type="hidden" name="cate" id="cate">
+			</li>
             <li>
                 <p class="listN">상품명</p>
-                <input type="text" th:filed="*{name}" placeholder="상품명을 입력해주세요.">
-                <p th:if="${fields.hassErrors('name')}" th:errors="*{name}" class="fieldError">Incorrect data</p>
+                <input type="text" name="name" th:filed="*{name}" placeholder="상품명을 입력해주세요.">
             </li>
             <li>
                 <p class="listN">가격</p>
-                <input type="number" th:filed="*{price}" placeholder="가격을 입력해주세요.">
+                <input type="number" name="price" th:filed="*{price}" placeholder="가격을 입력해주세요.">
             </li>
             <li>
-                <p class="listN">제조사/업체명</p>
-                <input type="text" th:filed="*{madeBy}" placeholder="제조사/업체명을 입력해주세요.">
+            	<p class="listN">제조사</p>
+            	<input type="text" name="madeBy" th:value="${productFormDto.madeBy}" placeholder="제조사/업체명을 입력해주세요.">
             </li>
             <li>
                 <p class="listN">재고 수량</p>
-                <input type="text" th:filed="*{stockNumber}" placeholder="온라인 판매 상품이 아닐 시 입력X">
+                <input type="text" name="stockNumber" th:filed="*{stockNumber}" placeholder="온라인 판매 상품이 아닐 시 입력X">
             </li>
             <li>
                 <p class="listN">대표 성분</p>
-                <textarea name="ingredient" th:filed="*{ingredient}" cols="50" rows="5"></textarea>
+                <textarea name="ingredient"th:filed="*{ingredient}" cols="50" rows="5"></textarea>
             </li>
             <li>
                 <p class="listN">상세 설명</p>
-                <textarea th:filed="*{detail}" cols="70" rows="10" placeholder="제품 설명 / 복용 방법 등"></textarea>
+                <textarea th:filed="*{detail}" name="detail" cols="70" rows="10" placeholder="제품 설명 / 복용 방법 등"></textarea>
             </li>
-            <li th:if="${#lists.isEmpty(productFormDto.productImgDtoList)">
+            <li th:if="${#lists.isEmpty(productFormDto.productImgDtoList)}" th:each="num: ${#numbers.sequence(1,4)}">
                 <p class="listN">상품 이미지</p>
-                <div class="filebox" th:each="num: ${#numbers.sequence(1,5)}">
-                    <input class="upload-name" value="첨부파일" placeholder="첨부파일" >
-                    <label for="file" th:text="상품이미지 + ${num}">파일찾기</label> 
-                    <input type="file" id="file" name="productImgFile">
+                <div class="filebox" >
+                	<input type="file" class="custom-file-input" name="productImgFile">
+                	<label class="custom-file-label" th:text="상품이미지 + ${num}"></label>
                 </div>
             </li>
-            <li>
+            <li th:if = "${not #lists.isEmpty(productFormDto.productImgDtoList)}" th:each="productImgDto, status: ${productFormDto.productImgDtoList}">
                 <p class="listN">상세 이미지</p>
                 <div class="filebox">
-                    <input class="upload-name" value="첨부파일" placeholder="첨부파일">
-                    <label for="file">파일찾기</label> 
-                    <input type="file" id="file">
+                    <input type="hidden" name="productImgIds" th:value="${productImgDto.id}">
+                    <input type="file" class="custom-file-input" id="file" name="productImgFile">
+                    <label for="file" class="custom-file-label" th:text="${not #strings.isEmpty(productImgDto.oriImgName)} ? ${productImgDto.oriImgName} : '상품이미지' + ${status.index+1}"></label> 
+                    
                 </div>
             </li>
-            <li>
-                <p class="listN">상세 이미지</p>                
-                <div class="filebox">
-                    <input class="upload-name" value="첨부파일" placeholder="첨부파일">
-                    <label for="file">파일찾기</label> 
-                    <input type="file" id="file">
-                </div>
-            </li>
-            <li>
-                <p class="listN">상세 이미지</p>
-                <div class="filebox">
-                    <input class="upload-name" value="첨부파일" placeholder="첨부파일">
-                    <label for="file">파일찾기</label> 
-                    <input type="file" id="file">
-                </div>
-            </li>
-            <li>
+            <li th:if="${#strings.isEmpty(productFormDto.id)}">
                 <p class="required">관리자 승인 후 홈페이지에 업로드됩니다.</p>
-                <button type="submit" class="regBtn">등록하기</button>
+                <button th:formaction="@{/company/product/new}" type="submit" class="regBtn" >등록하기</button>
+            </li>
+            <li th:unless="${#strings.isEmpty(productFormDto.id)}">
+            	<button th:formaction="@{'/company/product/' + ${productFormDto.id} }" type="submit" class="regBtn" >수정</button>
+            </li>
+            <li>
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
             </li>
         </ul>
-        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+        
     </form>
 </div>
 

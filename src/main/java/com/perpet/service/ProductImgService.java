@@ -1,11 +1,11 @@
 package com.perpet.service;
 
 import javax.persistence.EntityNotFoundException;
-import javax.transaction.Transactional;
 
 import org.apache.groovy.parser.antlr4.util.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.perpet.entity.ProductImg;
@@ -18,7 +18,7 @@ import lombok.RequiredArgsConstructor;
 @Transactional
 public class ProductImgService {
 
-	/* @Value("${productImgLocation}") */
+	 @Value("${productImgLocation}")
 	private String productImgLocation;
 	
 	private final ProductImgRepository productImgRepository;
