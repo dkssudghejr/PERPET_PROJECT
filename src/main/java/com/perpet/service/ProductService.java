@@ -85,4 +85,9 @@ public class ProductService {
 		
 		return product.getId();
 	}
+	
+	//승인되지 않은 상품 목록
+	public List<Product> approvalNProduct(String approval){
+		return productRepository.findByApproval(approval);
+	}
 }

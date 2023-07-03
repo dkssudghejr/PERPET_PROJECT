@@ -8,7 +8,7 @@ import com.perpet.entity.Product;
 
 public interface ProductRepositoryCustom {
 	
-	//상품 조회 조건을 담고 있는 itemSearchDto
+	//상품 조회 조건을 담고 있는 productSearchDto
 	Page<Product> getCompanyProductPage(ProductSearchDto productSearchDto, Pageable pageable);
 	
 	/*

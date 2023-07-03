@@ -13,7 +13,7 @@ import lombok.ToString;
 public class ProductDto {
 	
 	private Long id; //상품 아이디
-	 
+	
 	private int cate; //상품 카테고리
 	
 	private String name; //상품명
@@ -36,8 +36,7 @@ public class ProductDto {
 	
 	private ProductSellStatus productSellStatus; //판매 상태
 	
-	private LocalDateTime regDate; //등록일
-	
-	private LocalDateTime update; //변경일
-	
+	private LocalDateTime regTime; // 등록시간
+
+	private LocalDateTime updateTime; // 변경시간
 }

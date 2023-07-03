@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.perpet.contstant.Role;
 import com.perpet.entity.Member;
+import com.perpet.entity.Product;
 import com.perpet.repository.MemberRepository;
 import com.perpet.service.MemberService;
+import com.perpet.service.ProductService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -24,12 +26,15 @@ public class AdminController {
 
 	private final MemberService memberService;
 	private final MemberRepository memberRepository;
+	private final ProductService productService;
 
 	@GetMapping
 	public String admin(Model model) {
 		String approval = "N";
-
+ 
 		List<Member> companyList = memberService.approvalNCompany(approval);
+		List<Product> productList = productService.approvalNProduct(approval);
+		model.addAttribute("productList", productList);
 		model.addAttribute("companyList", companyList);
 
 		return "adminMain";
