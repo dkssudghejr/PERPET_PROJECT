@@ -18,7 +18,7 @@ import lombok.RequiredArgsConstructor;
 @Transactional
 public class ProductImgService {
 
-	 @Value("${productImgLocation}")
+	@Value("${productImgLocation}")
 	private String productImgLocation;
 	
 	private final ProductImgRepository productImgRepository;
@@ -49,7 +49,7 @@ public class ProductImgService {
 		if(!productImgFile.isEmpty()) {
 			//이미지 아이디를 이용하여 기존에 저장했던 상품 이미지 엔티티를 조회
 			ProductImg savedProductImg = productImgRepository.findById(productImgId).orElseThrow(EntityNotFoundException::new);
-			
+			 
 			//기존에 등록된 상품 이미지 파일이 있는 경우 해당 파일을 삭제
 			if(!StringUtils.isEmpty(savedProductImg.getImgName())) {
 				fileService.deleteFile(productImgLocation + "/" + savedProductImg.getImgName());

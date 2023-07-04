@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.perpet.dto.MemberFormDto;
 import com.perpet.dto.ProductFormDto;
+import com.perpet.repository.ProductRepository;
 import com.perpet.service.ProductService;
 
 import lombok.RequiredArgsConstructor;
@@ -25,6 +27,9 @@ import lombok.RequiredArgsConstructor;
 public class ProductController {
 	
 	private final ProductService productService;
+	
+	private final ProductRepository productRepository;
+	
 	
 	//상품 등록 페이지 이동
 	@GetMapping("/company/product/new")
@@ -109,4 +114,17 @@ public class ProductController {
 		return "redirect:/company";
 	}
 	
+
+	@PostMapping("/admin/approvalP/{id}")
+	public String approveProduct(@PathVariable("id") Long id){
+		String approval ="Y";
+		productRepository.updateApproval(approval, id);
+		return "redirect:/admin";		
+	}
+	
+	@PostMapping("/dltCompany/{id}")
+	public ResponseEntity<String> deleteProduct(@PathVariable("id") Long id){
+		productRepository.deleteById(id);
+		return ResponseEntity.ok("거절 완료");
+	}
 }

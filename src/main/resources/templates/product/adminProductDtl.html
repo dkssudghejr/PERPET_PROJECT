@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/corpLayout}">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+	<link rel="stylesheet" href="/css/productDtlStyle.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</head>
+<div layout:fragment="content">
+	<div class="wrap">
+        <div class="container">
+            <div class="topInfo">
+                <div class="topImg">
+                    <img src="./img/img1.png" alt="">
+                </div>
+                <div class="productInfo">
+                    <ul>
+                        <li>판매중</li>
+                        <li><h2>상품명 ~~</h2></li>
+                        <li><h3>1000000원</h3></li>
+                        <li class="prodCnt">
+                            <span class="num">수량</span>
+                            <input type="number" name="count" id="count" class="form-control" value="1" min="1">개
+                        </li>
+                        <li>
+                            <div class="order">
+                                <div>결제금액</div>
+                                <div class="totalPrice">1000원</div>
+                                <div class="delivery">배송비 2,500원 / 30,000원 이상 무료 배송 </div>
+                                <!-- <button class="disLikeBtn"><i class="xi-heart"></i></button> -->
+                                <div>
+                                    <button type="button" class="approvalN">상품 거절</button>
+                                    <button type="button" class="approvalY">상품 승인</button>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div><!--.topInfo-->
+            <div class="productDetail">
+                <div class="salesPharm">
+                    <h3>판매 약국</h3>
+                    <div class="pharmInfo">
+                        <div class="maps">
+
+                        </div>
+                        <div>
+                            <ul class="salesPaharmList">
+                                <li>약국 이름</li>
+                                <li>약국 이름</li>
+                                <li>약국 이름</li>
+                                <li>약국 이름</li>
+                                <li>약국 이름</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <ul class="prodMenu">
+                    <li>상품 상세설명</li>
+                    <li>상품후기</li>
+                    <li>교환/반품/배송정보</li>
+                </ul>
+                <div class="content">
+                    <div class="detailWrt">
+                        <h3>급여량 및 방법</h3>
+                        <br>
+                        <p>상세설명입니다.</p>
+                        <br><br>
+                        <h3>주의사항</h3>
+                        <br>
+                        <p>주의사항입니다.</p>
+                    </div>
+                    <ul class="prodImg">
+                        <li><img src="./img/img1.png" alt=""></li>
+                        <li><img src="./img/img1.png" alt=""></li>
+                        <li><img src="./img/img1.png" alt=""></li>
+                    </ul>
+                </div>
+            </div>
+        </div><!--.container-->
+    </div>
+    <div class="topBtn">
+        <a href="#"><i class="xi-angle-up xi-2x"></i></a>
+    </div>
+</div>
+
+</html>
