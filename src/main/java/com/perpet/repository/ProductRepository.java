@@ -26,10 +26,13 @@ public interface ProductRepository extends JpaRepository<Product, Long>, Queryds
 	// 관리자 승인별
 	List<Product> findByApproval(String approval);
 
-	// 관리자가 업체 승인
+	// 관리자가 상품 승인
 	@Modifying
 	@Transactional
 	@Query("UPDATE Product p SET p.approval = :approval WHERE p.id = :id")
 	void updateApproval(@Param("approval") String approval, @Param("id") Long id);
+	
+	@Transactional
+	void deleteById(Long id);
 
 }

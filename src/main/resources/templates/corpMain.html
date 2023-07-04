@@ -18,58 +18,19 @@
                 <h2>승인 대기 중 상품</h2>
                 <div class="prodBox">
                     <ul class="prodList">
-                        <li>
-                            <a href="">
-                                <img src="./img/img1.png" alt="">
-                                <p class="price">28,000</p>
-                                <p class="productName">상품 이름 영양제 소독약</p>
-                                <span class="sellInfo">
-                                    <p class="sellCnt">누적판매 35 ⋅</p>
-                                    <p class="wishCnt">찜 57</p>
-                                    <p class="reviewCnt">⋅ 리뷰 22</p>
-                                </span>
-                                <p class="madeBy">제조사</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
-                                <img src="./img/img1.png" alt="">
-                                <p class="price">28,000</p>
-                                <p class="productName">상품 이름 영양제 소독약</p>
-                                <span class="sellInfo">
-                                    <p class="sellCnt">누적판매 35 ⋅</p>
-                                    <p class="wishCnt">찜 57</p>
-                                    <p class="reviewCnt">⋅ 리뷰 22</p>
-                                </span>
-                                <p class="madeBy">제조사</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
-                                <img src="./img/img1.png" alt="">
-                                <p class="price">28,000</p>
-                                <p class="productName">상품 이름 영양제 소독약</p>
-                                <span class="sellInfo">
-                                    <p class="sellCnt">누적판매 35 ⋅</p>
-                                    <p class="wishCnt">찜 57</p>
-                                    <p class="reviewCnt">⋅ 리뷰 22</p>
-                                </span>
-                                <p class="madeBy">제조사</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
-                                <img src="./img/img1.png" alt="">
-                                <p class="price">28,000</p>
-                                <p class="productName">상품 이름 영양제 소독약</p>
-                                <span class="sellInfo">
-                                    <p class="sellCnt">누적판매 35 ⋅</p>
-                                    <p class="wishCnt">찜 57</p>
-                                    <p class="reviewCnt">⋅ 리뷰 22</p>
-                                </span>
-                                <p class="madeBy">제조사</p>
-                            </a>
-                        </li>
+                        <li th:each="productList : ${productList}">
+							<a th:href="'/product/' + ${productList.id}"> 
+								<img src="./img/img1.png" alt="">
+								<p class="price">[[${productList.price}]]원</p>
+<!-- 								<p class="price"><span th:text="${#numbers.formatDecimal(productList.price, 0, ',', 3)}"></span>원</p> -->
+								<p class="productName">[[${productList.name}]]</p> 
+								<span class="sellInfo">
+									<p class="wishCnt">[[${productList.wish}]]</p>
+									<p class="reviewCnt">⋅ 리뷰 22</p>
+								</span>
+								<p class="madeBy">[[${productList.madeBy}]]<button class="modBtn"><a th:href="'/company/product/' + ${productList.id}">수정</a></button></p>
+							</a>
+						</li>
                     </ul>
                 </div><!--.prodBox-->
             </div><!--.noApprovedProd-->

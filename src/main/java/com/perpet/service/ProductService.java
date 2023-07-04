@@ -73,6 +73,7 @@ public class ProductService {
 	
 	//상품 수정
 	public Long updateProduct(ProductFormDto productFormDto, List<MultipartFile> productImgFileList) throws Exception{
+		
 		Product product = productRepository.findById(productFormDto.getId()).orElseThrow(EntityNotFoundException::new);
 		
 		product.updateProduct(productFormDto);

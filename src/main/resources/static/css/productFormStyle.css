@@ -50,9 +50,17 @@ h2{
     display: flex;
 }
 
+.imgList li{
+	border : none;
+}
+
 .productForm li:last-child{
     border-bottom: none;
     justify-content: end;
+}
+
+.imgList li:last-child{
+	justify-content: start;
 }
 
 .productForm li input{

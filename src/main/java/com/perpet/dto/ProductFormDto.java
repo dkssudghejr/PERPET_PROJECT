@@ -43,6 +43,8 @@ public class ProductFormDto {
 	@NotBlank(message="상세 설명은 필수입니다.")
 	private String detail;
 	
+	private String approval = "N";
+	
 	private ProductSellStatus productSellStatus; //판매상태
 	
 	//상품을 저장한 후 변경할 때 상품이미지 정보를 저장하는 리스트

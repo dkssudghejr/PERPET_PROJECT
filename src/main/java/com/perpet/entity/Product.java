@@ -77,6 +77,7 @@ public class Product extends BaseEntity{
 		this.price = productFormDto.getPrice();
 		this.madeBy = productFormDto.getMadeBy();
 		this.stockNumber = productFormDto.getStockNumber();
+		this.approval = productFormDto.getApproval();
 		this.ingredient = productFormDto.getIngredient();
 		this.detail = productFormDto.getDetail();
 		this.productSellStatus = productFormDto.getProductSellStatus();
