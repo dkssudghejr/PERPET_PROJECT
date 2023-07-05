@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.perpet.entity.Product;
 
-public interface ProductRepository extends JpaRepository<Product, Long>, QuerydslPredicateExecutor<Product> {
+public interface ProductRepository extends JpaRepository<Product, Long>, QuerydslPredicateExecutor<Product> , ProductRepositoryCustom{
 
 	// 상품명으로 조회
 	List<Product> findByName(String name);
