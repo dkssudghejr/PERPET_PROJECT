@@ -32,6 +32,7 @@ public interface ProductRepository extends JpaRepository<Product, Long>, Queryds
 	@Query("UPDATE Product p SET p.approval = :approval WHERE p.id = :id")
 	void updateApproval(@Param("approval") String approval, @Param("id") Long id);
 	
+	//상품 삭제
 	@Transactional
 	void deleteById(Long id);
 

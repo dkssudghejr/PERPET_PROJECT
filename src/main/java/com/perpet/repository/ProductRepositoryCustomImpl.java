@@ -23,6 +23,7 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom{
 	//동적으로 쿼리를 생성하기 위해서 JpaQueryFactory클래스를 사용함
 	private JPAQueryFactory queryFactory;
 	
+	//JPAQueryFactory의 생성자로 EntityManager를 초기화
 	public ProductRepositoryCustomImpl(EntityManager em) {
 		this.queryFactory = new JPAQueryFactory(em);
 	}
@@ -64,7 +65,7 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom{
 	}
 	
 	@Override
-	public Page<Product> getCompanyProductPage(ProductSearchDto productSearchDto, Pageable pageable) {
+	public Page<Product> getAdminProductPage(ProductSearchDto productSearchDto, Pageable pageable) {
 		//쿼리를 실행해서 조회된 항목을 가져옴
 		List<Product> content = queryFactory.selectFrom(QProduct.product)
 					.where(regDtsAfter(productSearchDto.getSearchDateType()),

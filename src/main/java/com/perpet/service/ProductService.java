@@ -5,12 +5,15 @@ import java.util.List;
 
 import javax.persistence.EntityNotFoundException;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.perpet.dto.ProductFormDto;
 import com.perpet.dto.ProductImgDto;
+import com.perpet.dto.ProductSearchDto;
 import com.perpet.entity.Product;
 import com.perpet.entity.ProductImg;
 import com.perpet.repository.ProductImgRepository;
@@ -90,5 +93,12 @@ public class ProductService {
 	//승인되지 않은 상품 목록
 	public List<Product> approvalNProduct(String approval){
 		return productRepository.findByApproval(approval);
+	}
+	
+	//상품 조회 조건과 페이지 정보를 파라미터로 받아서 조회
+	//데이터의 변경이 발생하지 않으므로 읽기전용
+	@Transactional(readOnly = true)
+	public Page<Product> getAdminProductPage(ProductSearchDto productSearchDto, Pageable pagealbe){
+		return productRepository.getAdminProductPage(productSearchDto, pagealbe);
 	}
 }
