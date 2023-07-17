@@ -55,6 +55,16 @@ input {
 }
 
 .modBtn{
+	float: right;
+	width: 60px;
+	font-weight: bold;
+	background-color: rgb(195, 209, 195);
+    border: 1px solid #aaa;
+    margin-right:10px;
+}
+
+.modBtn:hover{
+    border: 1px solid #333;
 }
 
 .myCorpProd {

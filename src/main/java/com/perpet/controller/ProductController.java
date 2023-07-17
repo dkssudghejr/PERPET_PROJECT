@@ -1,11 +1,14 @@
 package com.perpet.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
 
-import org.springframework.http.ResponseEntity;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,7 +20,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.perpet.dto.MemberFormDto;
 import com.perpet.dto.ProductFormDto;
-import com.perpet.repository.ProductRepository;
+import com.perpet.dto.ProductSearchDto;
+import com.perpet.entity.Product;
 import com.perpet.service.ProductService;
 
 import lombok.RequiredArgsConstructor;
@@ -28,16 +32,21 @@ public class ProductController {
 	
 	private final ProductService productService;
 	
-	private final ProductRepository productRepository;
+	/* private final ProductRepository productRepository; */
 	
 	
 	//상품 등록 페이지 이동
 	@GetMapping("/company/product/new")
-	public String productForm(Model model) {
+	public String productFormC(Model model) {
 		model.addAttribute("productFormDto", new ProductFormDto());
 		return "/product/productForm";
 	}
 	
+	@GetMapping("/admin/product/new")
+	public String productFormA(Model model) {
+		model.addAttribute("productFormDto", new ProductFormDto());
+		return "/product/productForm";
+	}
 	//상품 등록하기
 	//@Valid로 유효성 검사를 하고 BindingResult에 저장
 	//productImgFile을 요청했다면, productImgFileList로 저장하여 처리
@@ -67,6 +76,8 @@ public class ProductController {
 		return "redirect:/company";
 		
 	}
+	
+	
 	
 	//상품 정보 불러오기
 	@GetMapping("/company/product/{productId}")
@@ -114,17 +125,19 @@ public class ProductController {
 		return "redirect:/company";
 	}
 	
-
-	@PostMapping("/admin/approvalP/{id}")
-	public String approveProduct(@PathVariable("id") Long id){
-		String approval ="Y";
-		productRepository.updateApproval(approval, id);
-		return "redirect:/admin";		
-	}
-	
-	@PostMapping("/dltCompany/{id}")
-	public ResponseEntity<String> deleteProduct(@PathVariable("id") Long id){
-		productRepository.deleteById(id);
-		return ResponseEntity.ok("거절 완료");
+	//상품 관리 페이지
+	@GetMapping({"/admin/products", "/admin/products/{page}"})
+	public String productManage(ProductSearchDto productSearchDto, @PathVariable("page") Optional<Integer> page, Model model) {
+		Pageable pagealbe = PageRequest.of(page.isPresent() ? page.get() : 0, 3);
+		
+		Page<Product> products = productService.getAdminProductPage(productSearchDto, pagealbe);
+		
+		model.addAttribute("products", products);
+		
+		model.addAttribute("productSearchDto", productSearchDto);
+		
+		model.addAttribute("maxPage", 5);
+		
+		return "product/productMng";
 	}
 }

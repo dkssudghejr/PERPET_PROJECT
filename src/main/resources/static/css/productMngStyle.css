@@ -1,0 +1,50 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'NanumSquareNeo-Variable';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+a{
+    color: #333;
+    text-decoration: none;
+}
+
+body{
+    font-family: 'NanumSquareNeo-Variable',serif;
+    font-size: 18px;
+    line-height: 23px;
+    color: #333;
+}
+
+img{
+    vertical-align: top;
+}
+
+input{
+    outline: none;
+}
+
+.wrap{
+    width: 100%;
+    min-width: 1280px;
+}
+
+form{
+    width: 1240px;
+    margin: 100px auto;
+}
+
+.table, .pagenation, .form-inline{
+    width: 800px;
+    margin: 100px auto;
+    justify-content: center;
+}
